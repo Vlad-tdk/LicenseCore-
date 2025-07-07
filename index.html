@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
     <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+
+    <!-- HTTPS Enforcement for Web Crypto API -->
+    <script>
+        // Force HTTPS for Web Crypto API compatibility
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+        }
+    </script>
+
+    <!-- Demo configuration -->
+    <script src="demo_config.js"></script>
     <title>LicenseCore++ - Enterprise Software Licensing Solution</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -260,9 +271,7 @@
                     <div class="price">$299</div>
                     <ul>
                         <li>✅ Single developer license</li>
-                        <li>✅ C++ source code access</li>
                         <li>✅ All platforms support</li>
-                        <li>✅ WebAssembly compilation</li>
                         <li>✅ 1 year updates</li>
                         <li>✅ Email support</li>
                     </ul>
@@ -277,9 +286,10 @@
                         <li>✅ Up to 5 developers</li>
                         <li>✅ Commercial redistribution</li>
                         <li>✅ OEM embedding rights</li>
+                        <li>✅ WebAssembly compilation</li>
                         <li>✅ Advanced obfuscation</li>
                         <li>✅ Priority support</li>
-                        <li>✅ 2 years updates</li>
+                        <li>✅ 1 years updates</li>
                     </ul>
                     <button class="btn-pricing">Get Professional License</button>
                 </div>
@@ -289,11 +299,12 @@
                     <div class="price">$1,999/year</div>
                     <ul>
                         <li>✅ Unlimited developers</li>
+                        <li>✅ Custom branding</li>
+                        <li>✅ WebAssembly compilation</li>
                         <li>✅ Unlimited products</li>
                         <li>✅ Source modifications</li>
-                        <li>✅ 24/7 phone support</li>
+                        <li>✅ Priority support</li>
                         <li>✅ Custom integrations</li>
-                        <li>✅ SLA guarantees</li>
                     </ul>
                     <button class="btn-pricing">Contact Sales</button>
                 </div>
@@ -355,7 +366,7 @@ async function initializeLicensing() {
     <div class="footer">
         <p>&copy; 2024 LicenseCore Technologies. Enterprise licensing made simple.</p>
         <div class="footer-links">
-            <a href="https://github.com/licensecore/licensecore">GitHub</a>
+            <a href="https://licensecore.tech">Website</a>
             <a href="mailto:enterprise@licensecore.tech">Contact</a>
             <a href="#pricing">Pricing</a>
             <a href="docs.html">Documentation</a>
