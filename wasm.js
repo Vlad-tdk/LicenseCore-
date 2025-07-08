@@ -75,8 +75,8 @@ class LicenseCoreDemo {
         `;
         document.body.appendChild(warning);
         
-        // Add margin to body to account for warning banner
-        document.body.style.marginTop = '40px';
+        // Add margin to body to account for warning banner and navbar
+        document.body.style.marginTop = '120px'; // 40px warning + 80px navbar
     }
     
     // Rate limiting for demo
