@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCZ7W0Q6E8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WCZ7W0Q6E8');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
@@ -383,7 +392,7 @@ async function initializeLicensing() {
                     <h3 id="modalLicenseType">Professional License</h3>
                     <div class="price-display" id="modalPrice">$899</div>
                 </div>
-                
+
                 <div class="payment-notice">
                     <div class="notice-icon">⚠️</div>
                     <div class="notice-content">
@@ -396,7 +405,7 @@ async function initializeLicensing() {
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="contact-info">
                     <h4>📧 Contact for Order:</h4>
                     <div class="email-contact">
@@ -404,7 +413,7 @@ async function initializeLicensing() {
                     </div>
                     <p>Email us with your desired license type and we'll send payment details.</p>
                 </div>
-                
+
                 <div class="modal-actions">
                     <button class="btn btn-primary" onclick="sendEmail()">📧 Send Email</button>
                     <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
