@@ -834,3 +834,73 @@ function sendEmail() {
     window.location.href = `mailto:sales@licensecore.tech?subject=${subject}&body=${body}`;
     closeModal();
 }
+
+// Cookie Consent Functions
+function showCookieBanner() {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+        const banner = document.getElementById('cookieConsent');
+        banner.classList.add('show');
+    }
+}
+
+function acceptCookies() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    localStorage.setItem('analytics-cookies', 'true');
+    localStorage.setItem('marketing-cookies', 'true');
+    hideCookieBanner();
+    
+    // Enable Google Analytics or other tracking
+    console.log('Cookies accepted - enabling tracking');
+}
+
+function rejectCookies() {
+    localStorage.setItem('cookieConsent', 'rejected');
+    localStorage.setItem('analytics-cookies', 'false');
+    localStorage.setItem('marketing-cookies', 'false');
+    hideCookieBanner();
+    
+    console.log('Cookies rejected - disabling tracking');
+}
+
+function showCookieSettings() {
+    const modal = document.getElementById('cookieSettingsModal');
+    if (modal) {
+        modal.classList.add('show');
+    } else {
+        // Fallback if modal doesn't exist
+        console.log('Cookie settings modal not found');
+    }
+}
+
+function closeCookieSettings() {
+    const modal = document.getElementById('cookieSettingsModal');
+    if (modal) {
+        modal.classList.remove('show');
+    }
+}
+
+function saveCookieSettings() {
+    const analyticsEnabled = document.getElementById('analytics-cookies')?.checked || false;
+    const marketingEnabled = document.getElementById('marketing-cookies')?.checked || false;
+    
+    localStorage.setItem('cookieConsent', 'custom');
+    localStorage.setItem('analytics-cookies', analyticsEnabled.toString());
+    localStorage.setItem('marketing-cookies', marketingEnabled.toString());
+    
+    hideCookieBanner();
+    closeCookieSettings();
+    
+    console.log('Cookie settings saved:', { analytics: analyticsEnabled, marketing: marketingEnabled });
+}
+
+function hideCookieBanner() {
+    const banner = document.getElementById('cookieConsent');
+    banner.classList.remove('show');
+}
+
+// Initialize cookie banner on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Show cookie banner after a short delay
+    setTimeout(showCookieBanner, 1000);
+});
