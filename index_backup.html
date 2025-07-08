@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCZ7W0Q6E8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WCZ7W0Q6E8');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
@@ -42,6 +51,239 @@
                 <span class="nav-title">LicenseCore++</span>
                 <span class="nav-badge">Enterprise</span>
             </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookieSettingsModal" class="modal">
+        <div class="modal-content cookie-settings-modal">
+            <span class="close" onclick="closeCookieSettings()">&times;</span>
+            <h2>🍪 Cookie Settings</h2>
+            <div class="modal-body">
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Essential Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" checked disabled>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies are necessary for the website to function and cannot be switched off.</p>
+                </div>
+                
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Analytics Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="analytics-cookies">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.</p>
+                </div>
+                
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Marketing Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="marketing-cookies">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies are used to deliver personalized advertisements and track the effectiveness of our marketing campaigns.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeCookieSettings()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveCookieSettings()">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GDPR Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>🍪 We use cookies</h4>
+                <p>We use cookies and similar technologies to personalize content, analyze traffic, and improve your experience. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn-cookie btn-cookie-reject" onclick="rejectCookies()">Reject All</button>
+                <button class="btn-cookie btn-cookie-settings" onclick="showCookieSettings()">Settings</button>
+                <button class="btn-cookie btn-cookie-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookieSettingsModal" class="modal">
+        <div class="modal-content cookie-settings-modal">
+            <span class="close" onclick="closeCookieSettings()">&times;</span>
+            <h2>🍪 Cookie Settings</h2>
+            <div class="modal-body">
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Essential Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" checked disabled>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies are necessary for the website to function and cannot be switched off.</p>
+                </div>
+                
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Analytics Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="analytics-cookies">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.</p>
+                </div>
+                
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Marketing Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="marketing-cookies">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies are used to deliver personalized advertisements and track the effectiveness of our marketing campaigns.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeCookieSettings()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveCookieSettings()">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GDPR Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>🍪 We use cookies</h4>
+                <p>We use cookies and similar technologies to personalize content, analyze traffic, and improve your experience. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn-cookie btn-cookie-reject" onclick="rejectCookies()">Reject All</button>
+                <button class="btn-cookie btn-cookie-settings" onclick="showCookieSettings()">Settings</button>
+                <button class="btn-cookie btn-cookie-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GDPR Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>🍪 We use cookies</h4>
+                <p>We use cookies and similar technologies to personalize content, analyze traffic, and improve your experience. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn-cookie btn-cookie-reject" onclick="rejectCookies()">Reject All</button>
+                <button class="btn-cookie btn-cookie-settings" onclick="showCookieSettings()">Settings</button>
+                <button class="btn-cookie btn-cookie-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookieSettings" class="modal">
+        <div class="modal-content cookie-settings-modal">
+            <span class="close" onclick="closeCookieSettings()">&times;</span>
+            <h2>🍪 Cookie Settings</h2>
+            <div class="modal-body">
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Essential Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" checked disabled>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies are necessary for the website to function and cannot be switched off.</p>
+                </div>
+                
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Analytics Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="analytics-cookies">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.</p>
+                </div>
+                
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Marketing Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="marketing-cookies">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies are used to deliver personalized advertisements and track the effectiveness of our marketing campaigns.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeCookieSettings()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveCookieSettings()">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookieSettings" class="modal">
+        <div class="modal-content cookie-settings-modal">
+            <span class="close" onclick="closeCookieSettings()">&times;</span>
+            <h2>🍪 Cookie Settings</h2>
+            <div class="modal-body">
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Essential Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" checked disabled>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies are necessary for the website to function and cannot be switched off.</p>
+                </div>
+                
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Analytics Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="analytics-cookies">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.</p>
+                </div>
+                
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <h3>Marketing Cookies</h3>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="marketing-cookies">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <p>These cookies are used to deliver personalized advertisements and track the effectiveness of our marketing campaigns.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeCookieSettings()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveCookieSettings()">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
             <div class="nav-menu">
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#demo" class="nav-link">Live Demo</a>
@@ -373,68 +615,6 @@ async function initializeLicensing() {
         </div>
     </div>
 
-    <!-- GDPR Cookie Consent Banner -->
-    <div id="cookieConsent" class="cookie-consent">
-        <div class="cookie-content">
-            <div class="cookie-text">
-                <h4>🍪 We use cookies</h4>
-                <p>We use cookies and similar technologies to personalize content, analyze traffic, and improve your experience. By clicking "Accept All", you consent to our use of cookies.</p>
-            </div>
-            <div class="cookie-buttons">
-                <button class="btn-cookie btn-cookie-reject" onclick="rejectCookies()">Reject All</button>
-                <button class="btn-cookie btn-cookie-settings" onclick="showCookieSettings()">Settings</button>
-                <button class="btn-cookie btn-cookie-accept" onclick="acceptCookies()">Accept All</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cookie Settings Modal -->
-    <div id="cookieSettingsModal" class="modal">
-        <div class="modal-content cookie-settings-modal">
-            <span class="close" onclick="closeCookieSettings()">&times;</span>
-            <h2>🍪 Cookie Settings</h2>
-            <div class="modal-body">
-                <div class="cookie-category">
-                    <div class="cookie-category-header">
-                        <h3>Essential Cookies</h3>
-                        <label class="cookie-switch">
-                            <input type="checkbox" checked disabled>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <p>These cookies are necessary for the website to function and cannot be switched off.</p>
-                </div>
-                
-                <div class="cookie-category">
-                    <div class="cookie-category-header">
-                        <h3>Analytics Cookies</h3>
-                        <label class="cookie-switch">
-                            <input type="checkbox" id="analytics-cookies">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.</p>
-                </div>
-                
-                <div class="cookie-category">
-                    <div class="cookie-category-header">
-                        <h3>Marketing Cookies</h3>
-                        <label class="cookie-switch">
-                            <input type="checkbox" id="marketing-cookies">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <p>These cookies are used to deliver personalized advertisements and track the effectiveness of our marketing campaigns.</p>
-                </div>
-                
-                <div class="modal-actions">
-                    <button class="btn btn-secondary" onclick="closeCookieSettings()">Cancel</button>
-                    <button class="btn btn-primary" onclick="saveCookieSettings()">Save Settings</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Purchase Modal -->
     <div id="purchaseModal" class="modal">
         <div class="modal-content">
@@ -445,7 +625,7 @@ async function initializeLicensing() {
                     <h3 id="modalLicenseType">Professional License</h3>
                     <div class="price-display" id="modalPrice">$899</div>
                 </div>
-                
+
                 <div class="payment-notice">
                     <div class="notice-icon">⚠️</div>
                     <div class="notice-content">
@@ -458,7 +638,7 @@ async function initializeLicensing() {
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="contact-info">
                     <h4>📧 Contact for Order:</h4>
                     <div class="email-contact">
@@ -466,11 +646,26 @@ async function initializeLicensing() {
                     </div>
                     <p>Email us with your desired license type and we'll send payment details.</p>
                 </div>
-                
+
                 <div class="modal-actions">
                     <button class="btn btn-primary" onclick="sendEmail()">📧 Send Email</button>
                     <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GDPR Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>🍪 We use cookies</h4>
+                <p>We use cookies and similar technologies to personalize content, analyze traffic, and improve your experience. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn-cookie btn-cookie-reject" onclick="rejectCookies()">Reject All</button>
+                <button class="btn-cookie btn-cookie-settings" onclick="showCookieSettings()">Settings</button>
+                <button class="btn-cookie btn-cookie-accept" onclick="acceptCookies()">Accept All</button>
             </div>
         </div>
     </div>
