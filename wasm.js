@@ -850,8 +850,17 @@ function acceptCookies() {
     localStorage.setItem('marketing-cookies', 'true');
     hideCookieBanner();
     
-    // Enable Google Analytics or other tracking
-    console.log('Cookies accepted - enabling tracking');
+    // Update Google Consent Mode
+    if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
+        });
+    }
+    
+    console.log('Cookies accepted - enabling all tracking');
 }
 
 function rejectCookies() {
@@ -860,7 +869,8 @@ function rejectCookies() {
     localStorage.setItem('marketing-cookies', 'false');
     hideCookieBanner();
     
-    console.log('Cookies rejected - disabling tracking');
+    // Keep Google Consent Mode as denied (default)
+    console.log('Cookies rejected - tracking remains disabled');
 }
 
 function showCookieSettings() {
@@ -888,6 +898,16 @@ function saveCookieSettings() {
     localStorage.setItem('analytics-cookies', analyticsEnabled.toString());
     localStorage.setItem('marketing-cookies', marketingEnabled.toString());
     
+    // Update Google Consent Mode based on user choices
+    if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+            'ad_storage': marketingEnabled ? 'granted' : 'denied',
+            'ad_user_data': marketingEnabled ? 'granted' : 'denied', 
+            'ad_personalization': marketingEnabled ? 'granted' : 'denied',
+            'analytics_storage': analyticsEnabled ? 'granted' : 'denied'
+        });
+    }
+    
     hideCookieBanner();
     closeCookieSettings();
     
@@ -901,6 +921,34 @@ function hideCookieBanner() {
 
 // Initialize cookie banner on page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Show cookie banner after a short delay
-    setTimeout(showCookieBanner, 1000);
+    // Check if user already made a choice
+    const consent = localStorage.getItem('cookieConsent');
+    
+    if (consent === 'accepted') {
+        // Update consent mode immediately
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted', 
+                'analytics_storage': 'granted'
+            });
+        }
+    } else if (consent === 'custom') {
+        // Apply custom settings
+        const analyticsEnabled = localStorage.getItem('analytics-cookies') === 'true';
+        const marketingEnabled = localStorage.getItem('marketing-cookies') === 'true';
+        
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                'ad_storage': marketingEnabled ? 'granted' : 'denied',
+                'ad_user_data': marketingEnabled ? 'granted' : 'denied',
+                'ad_personalization': marketingEnabled ? 'granted' : 'denied',
+                'analytics_storage': analyticsEnabled ? 'granted' : 'denied'
+            });
+        }
+    } else {
+        // Show cookie banner after a delay if no choice made
+        setTimeout(showCookieBanner, 1000);
+    }
 });
