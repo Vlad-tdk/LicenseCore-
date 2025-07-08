@@ -655,23 +655,39 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
         const pricingButtons = document.querySelectorAll('.btn-pricing');
         console.log('Found pricing buttons:', pricingButtons.length); // Debug log
+        console.log('Buttons:', pricingButtons); // Покажем сами кнопки
+        
+        // Простой тест
+        if (pricingButtons.length === 0) {
+            console.error('Кнопки не найдены!');
+            return;
+        }
         
         pricingButtons.forEach((button, index) => {
+            console.log(`Кнопка ${index}:`, button);
+            
+            // Простой тест клика
+            button.onclick = function() {
+                console.log('Клик по кнопке', index);
+                openPurchaseModal('Test License', '$999');
+            };
+            
             button.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent any default behavior
+                e.preventDefault();
+                console.log('Клик через addEventListener', index);
                 
                 let licenseType, price;
                 
                 switch(index) {
-                    case 0: // Developer
+                    case 0:
                         licenseType = 'Developer License';
                         price = '$299';
                         break;
-                    case 1: // Professional  
+                    case 1:
                         licenseType = 'Professional License';
                         price = '$899';
                         break;
-                    case 2: // Enterprise
+                    case 2:
                         licenseType = 'Enterprise License';
                         price = '$1,999/year';
                         break;
@@ -680,7 +696,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         price = 'Contact us';
                 }
                 
-                console.log('Opening modal for:', licenseType, price); // Debug log
+                console.log('Opening modal for:', licenseType, price);
                 openPurchaseModal(licenseType, price);
             });
         });
@@ -791,14 +807,14 @@ function openPurchaseModal(licenseType, price) {
     modalLicenseType.textContent = licenseType;
     modalPrice.textContent = price;
     
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    modal.classList.add('show'); // Используем класс
+    document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
     const modal = document.getElementById('purchaseModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    modal.classList.remove('show'); // Убираем класс
+    document.body.style.overflow = 'auto';
 }
 
 function sendEmail() {

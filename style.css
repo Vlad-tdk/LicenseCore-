@@ -284,15 +284,19 @@ input:focus, textarea:focus, select:focus {
 
 /* Purchase Modal Styles */
 .modal {
-    display: none;
+    display: none !important; /* Принудительно скрываем */
     position: fixed;
-    z-index: 10002;
+    z-index: 999999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.modal.show {
+    display: block !important; /* Показываем только с классом show */
 }
 
 .modal-content {
@@ -302,6 +306,7 @@ input:focus, textarea:focus, select:focus {
     border-radius: 1.5rem;
     max-width: 600px;
     position: relative;
+    z-index: 999999; /* Тоже максимальный */
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     animation: modalSlideIn 0.3s ease-out;
 }
