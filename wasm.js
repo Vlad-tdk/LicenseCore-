@@ -651,6 +651,64 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Purchase button handlers - ADD HERE
+    setTimeout(() => {
+        const pricingButtons = document.querySelectorAll('.btn-pricing');
+        console.log('Found pricing buttons:', pricingButtons.length); // Debug log
+        
+        pricingButtons.forEach((button, index) => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent any default behavior
+                
+                let licenseType, price;
+                
+                switch(index) {
+                    case 0: // Developer
+                        licenseType = 'Developer License';
+                        price = '$299';
+                        break;
+                    case 1: // Professional  
+                        licenseType = 'Professional License';
+                        price = '$899';
+                        break;
+                    case 2: // Enterprise
+                        licenseType = 'Enterprise License';
+                        price = '$1,999/year';
+                        break;
+                    default:
+                        licenseType = 'License';
+                        price = 'Contact us';
+                }
+                
+                console.log('Opening modal for:', licenseType, price); // Debug log
+                openPurchaseModal(licenseType, price);
+            });
+        });
+        
+        // Close modal when clicking X
+        const closeButton = document.querySelector('.close');
+        if (closeButton) {
+            closeButton.addEventListener('click', closeModal);
+        }
+        
+        // Close modal when clicking outside
+        const modal = document.getElementById('purchaseModal');
+        if (modal) {
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    }, 500); // Increased delay to ensure everything is loaded
+
     // Add demo scenario buttons
     const demoScenarios = document.createElement('div');
     demoScenarios.className = 'demo-scenarios';
@@ -760,61 +818,3 @@ function sendEmail() {
     window.location.href = `mailto:sales@licensecore.tech?subject=${subject}&body=${body}`;
     closeModal();
 }
-
-// Add purchase button handlers after DOM loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Small delay to ensure all elements are loaded
-    setTimeout(() => {
-        // Add handlers for all purchase buttons
-        const pricingButtons = document.querySelectorAll('.btn-pricing');
-        
-        pricingButtons.forEach((button, index) => {
-            button.addEventListener('click', function() {
-                let licenseType, price;
-                
-                switch(index) {
-                    case 0: // Developer
-                        licenseType = 'Developer License';
-                        price = '$299';
-                        break;
-                    case 1: // Professional  
-                        licenseType = 'Professional License';
-                        price = '$899';
-                        break;
-                    case 2: // Enterprise
-                        licenseType = 'Enterprise License';
-                        price = '$1,999/year';
-                        break;
-                    default:
-                        licenseType = 'License';
-                        price = 'Contact us';
-                }
-                
-                openPurchaseModal(licenseType, price);
-            });
-        });
-        
-        // Close modal when clicking X
-        const closeButton = document.querySelector('.close');
-        if (closeButton) {
-            closeButton.addEventListener('click', closeModal);
-        }
-        
-        // Close modal when clicking outside
-        const modal = document.getElementById('purchaseModal');
-        if (modal) {
-            modal.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-        }
-        
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-    }, 100);
-});
