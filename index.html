@@ -373,6 +373,46 @@ async function initializeLicensing() {
         </div>
     </div>
 
+    <!-- Purchase Modal -->
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>💳 License Purchase</h2>
+            <div class="modal-body">
+                <div class="purchase-info">
+                    <h3 id="modalLicenseType">Professional License</h3>
+                    <div class="price-display" id="modalPrice">$899</div>
+                </div>
+                
+                <div class="payment-notice">
+                    <div class="notice-icon">⚠️</div>
+                    <div class="notice-content">
+                        <h4>Temporary Payment Methods</h4>
+                        <p>Currently we accept payments only in cryptocurrency:</p>
+                        <ul>
+                            <li>💰 <strong>USDT</strong> (Tether)</li>
+                            <li>💎 <strong>TON</strong> (Toncoin)</li>
+                            <li>₿ <strong>Bitcoin</strong> (BTC)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h4>📧 Contact for Order:</h4>
+                    <div class="email-contact">
+                        <a href="mailto:sales@licensecore.tech">sales@licensecore.tech</a>
+                    </div>
+                    <p>Email us with your desired license type and we'll send payment details.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-primary" onclick="sendEmail()">📧 Send Email</button>
+                    <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="wasm.js"></script>
 </body>
 

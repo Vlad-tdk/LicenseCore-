@@ -282,6 +282,185 @@ input:focus, textarea:focus, select:focus {
 .footer-links a { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
 .footer-links a:hover { color: white; }
 
+/* Purchase Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10002;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 1.5rem;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-content h2 {
+    background: var(--gradient);
+    color: white;
+    margin: 0;
+    padding: 2rem;
+    border-radius: 1.5rem 1.5rem 0 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: white;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.purchase-info {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.purchase-info h3 {
+    color: var(--gray-900);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.price-display {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 1rem 0;
+}
+
+.payment-notice {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    border: 2px solid #f59e0b;
+}
+
+.notice-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.notice-content h4 {
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.notice-content p {
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+}
+
+.notice-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notice-content li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    color: var(--gray-800);
+    font-weight: 500;
+}
+
+.contact-info {
+    background: var(--gray-50);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-info h4 {
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.email-contact {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.email-contact a {
+    background: var(--gradient);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+}
+
+.email-contact a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px 0 rgba(37, 99, 235, 0.4);
+}
+
+.contact-info p {
+    color: var(--gray-600);
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal-actions .btn {
+    flex: 1;
+    max-width: 200px;
+}
+
 /* Animations */
 @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 .loading { animation: pulse 1.5s ease-in-out infinite; }

@@ -723,3 +723,98 @@ scenarioStyles.textContent = `
     }
 `;
 document.head.appendChild(scenarioStyles);
+
+// Purchase Modal Functions
+function openPurchaseModal(licenseType, price) {
+    const modal = document.getElementById('purchaseModal');
+    const modalLicenseType = document.getElementById('modalLicenseType');
+    const modalPrice = document.getElementById('modalPrice');
+    
+    modalLicenseType.textContent = licenseType;
+    modalPrice.textContent = price;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function closeModal() {
+    const modal = document.getElementById('purchaseModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+}
+
+function sendEmail() {
+    const licenseType = document.getElementById('modalLicenseType').textContent;
+    const price = document.getElementById('modalPrice').textContent;
+    
+    const subject = encodeURIComponent(`LicenseCore++ License Order - ${licenseType}`);
+    const body = encodeURIComponent(
+        `Hello!\n\n` +
+        `I would like to purchase a LicenseCore++ license:\n` +
+        `Type: ${licenseType}\n` +
+        `Price: ${price}\n\n` +
+        `Please send me payment details for cryptocurrency payment (USDT/TON/Bitcoin).\n\n` +
+        `Best regards`
+    );
+    
+    window.location.href = `mailto:sales@licensecore.tech?subject=${subject}&body=${body}`;
+    closeModal();
+}
+
+// Add purchase button handlers after DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Small delay to ensure all elements are loaded
+    setTimeout(() => {
+        // Add handlers for all purchase buttons
+        const pricingButtons = document.querySelectorAll('.btn-pricing');
+        
+        pricingButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                let licenseType, price;
+                
+                switch(index) {
+                    case 0: // Developer
+                        licenseType = 'Developer License';
+                        price = '$299';
+                        break;
+                    case 1: // Professional  
+                        licenseType = 'Professional License';
+                        price = '$899';
+                        break;
+                    case 2: // Enterprise
+                        licenseType = 'Enterprise License';
+                        price = '$1,999/year';
+                        break;
+                    default:
+                        licenseType = 'License';
+                        price = 'Contact us';
+                }
+                
+                openPurchaseModal(licenseType, price);
+            });
+        });
+        
+        // Close modal when clicking X
+        const closeButton = document.querySelector('.close');
+        if (closeButton) {
+            closeButton.addEventListener('click', closeModal);
+        }
+        
+        // Close modal when clicking outside
+        const modal = document.getElementById('purchaseModal');
+        if (modal) {
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    }, 100);
+});
