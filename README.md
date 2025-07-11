@@ -38,10 +38,12 @@ Welcome to LicenseCore++ - the professional commercial software licensing soluti
 ```cpp
 #include <license_core/license_manager.hpp>
 
-LicenseManager manager("your-secret-key");
-auto result = manager.load_and_validate(license_json);
+using namespace license_core;
 
-if (result.valid && manager.has_feature("premium")) {
+LicenseManager manager("your-secret-key");
+auto info = manager.load_and_validate(license_json);
+
+if (info.valid && manager.has_feature("premium")) {
     // License OK, premium features available
 }
 ```
@@ -156,6 +158,7 @@ public:
     // Individual components
     std::string get_cpu_id() const;
     std::string get_mac_address() const;
+    std::string get_volume_serial() const;
 
     // Cache management
     void clear_cache() const;

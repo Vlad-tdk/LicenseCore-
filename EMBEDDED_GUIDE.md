@@ -41,7 +41,7 @@ embedded/
 
 #### `int lc_validate_license(const char* license_json)`
 
-Проверяет валидность лицензии из JSON строки.
+Проверяет валидность лицензии из JSON строки. Функция автоматически получает текущий Hardware ID и сравнивает его с лицензией.
 
 **Параметры:**
 - `license_json` - JSON строка с лицензионными данными
@@ -53,13 +53,14 @@ embedded/
 **Пример:**
 ```c
 const char* license = R"({
-    "user": "Company Inc",
-    "product": "MyApp",
-    "version": "1.0",
-    "expiry": "2025-12-31",
+    "user_id": "Company Inc",
+    "license_id": "lic-12345",
+    "hardware_hash": "ABC123DEF456",
     "features": ["basic", "premium"],
-    "hwid": "ABC123DEF456",
-    "signature": "sha256_hmac_signature"
+    "expiry": "2025-12-31T23:59:59Z",
+    "issued_at": "2024-01-01T00:00:00Z",
+    "version": 1,
+    "hmac_signature": "sha256_hmac_signature"
 })";
 
 if (lc_validate_license(license)) {
@@ -278,13 +279,14 @@ public:
 ```cpp
 // Встраиваем лицензию прямо в код
 const char* embedded_license = R"({
-    "user": "OEM Partner",
-    "product": "EmbeddedApp",
-    "version": "1.0",
-    "expiry": "2025-12-31",
+    "user_id": "OEM Partner",
+    "license_id": "lic-embedded-001",
+    "hardware_hash": "*",
     "features": ["basic", "embedded"],
-    "hwid": "*",
-    "signature": "embedded_signature_here"
+    "expiry": "2025-12-31T23:59:59Z",
+    "issued_at": "2024-01-01T00:00:00Z",
+    "version": 1,
+    "hmac_signature": "embedded_signature_here"
 })";
 
 int main() {

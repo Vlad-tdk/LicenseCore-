@@ -19,12 +19,12 @@
     <script>
         // Define dataLayer and the gtag function
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
 
         // Set default consent to 'denied' as required by GDPR
         gtag('consent', 'default', {
             'ad_storage': 'denied',
-            'ad_user_data': 'denied', 
+            'ad_user_data': 'denied',
             'ad_personalization': 'denied',
             'analytics_storage': 'denied',
             'wait_for_update': 500
@@ -35,10 +35,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCZ7W0Q6E8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-WCZ7W0Q6E8');
-        
+
         // Enable URL passthrough for better tracking without cookies
         gtag('set', 'url_passthrough', true);
         gtag('set', 'ads_data_redaction', true);
@@ -297,7 +297,7 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Developer</h3>
-                    <div class="price">$299</div>
+                    <div class="price">$199</div>
                     <ul>
                         <li>✅ Single developer license</li>
                         <li>✅ All platforms support</li>
@@ -407,7 +407,8 @@ async function initializeLicensing() {
         <div class="cookie-content">
             <div class="cookie-text">
                 <h4>🍪 We use cookies</h4>
-                <p>We use cookies and similar technologies to personalize content, analyze traffic, and improve your experience. By clicking "Accept All", you consent to our use of cookies.</p>
+                <p>We use cookies and similar technologies to personalize content, analyze traffic, and improve your
+                    experience. By clicking "Accept All", you consent to our use of cookies.</p>
             </div>
             <div class="cookie-buttons">
                 <button class="btn-cookie btn-cookie-reject" onclick="rejectCookies()">Reject All</button>
@@ -433,7 +434,7 @@ async function initializeLicensing() {
                     </div>
                     <p>These cookies are necessary for the website to function and cannot be switched off.</p>
                 </div>
-                
+
                 <div class="cookie-category">
                     <div class="cookie-category-header">
                         <h3>Analytics Cookies</h3>
@@ -442,9 +443,10 @@ async function initializeLicensing() {
                             <span class="slider"></span>
                         </label>
                     </div>
-                    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.</p>
+                    <p>These cookies help us understand how visitors interact with our website by collecting and
+                        reporting information anonymously.</p>
                 </div>
-                
+
                 <div class="cookie-category">
                     <div class="cookie-category-header">
                         <h3>Marketing Cookies</h3>
@@ -453,9 +455,10 @@ async function initializeLicensing() {
                             <span class="slider"></span>
                         </label>
                     </div>
-                    <p>These cookies are used to deliver personalized advertisements and track the effectiveness of our marketing campaigns.</p>
+                    <p>These cookies are used to deliver personalized advertisements and track the effectiveness of our
+                        marketing campaigns.</p>
                 </div>
-                
+
                 <div class="modal-actions">
                     <button class="btn btn-secondary" onclick="closeCookieSettings()">Cancel</button>
                     <button class="btn btn-primary" onclick="saveCookieSettings()">Save Settings</button>
@@ -474,7 +477,7 @@ async function initializeLicensing() {
                     <h3 id="modalLicenseType">Professional License</h3>
                     <div class="price-display" id="modalPrice">$899</div>
                 </div>
-                
+
                 <div class="payment-notice">
                     <div class="notice-icon">⚠️</div>
                     <div class="notice-content">
@@ -487,7 +490,7 @@ async function initializeLicensing() {
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="contact-info">
                     <h4>📧 Contact for Order:</h4>
                     <div class="email-contact">
@@ -495,7 +498,7 @@ async function initializeLicensing() {
                     </div>
                     <p>Email us with your desired license type and we'll send payment details.</p>
                 </div>
-                
+
                 <div class="modal-actions">
                     <button class="btn btn-primary" onclick="sendEmail()">📧 Send Email</button>
                     <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
