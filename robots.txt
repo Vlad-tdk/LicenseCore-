@@ -1,0 +1,34 @@
+# Robots.txt for www.licensecore.tech
+# Allow all search engines to crawl
+
+User-agent: *
+Allow: /
+Disallow: /demo.js
+Disallow: /demo_config.js
+Disallow: /wasm.js
+Disallow: /.git/
+
+# Sitemap location
+Sitemap: https://www.licensecore.tech/sitemap.xml
+
+# Crawl delay for politeness (optional)
+Crawl-delay: 1
+
+# Allow Google Bot full access
+User-agent: Googlebot
+Allow: /
+
+# Allow Bing Bot full access
+User-agent: Bingbot
+Allow: /
+
+# Allow Yandex Bot
+User-agent: YandexBot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Crawl-delay: 10
