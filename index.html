@@ -264,6 +264,9 @@
                 <a href="docs.html" class="nav-link">Documentation</a>
                 <a href="#contact" class="nav-link nav-cta">Get Started</a>
             </div>
+            <button class="nav-hamburger" onclick="toggleMobileMenu()">
+                ☰
+            </button>
         </div>
     </nav>
 
@@ -537,76 +540,7 @@
         </div>
     </section>
 
-    <!-- Competitor Comparison Table -->
-    <section class="competitor-table">
-        <div class="container">
-            <h2>📊 LicenseCore++ vs Competitors: Feature Comparison</h2>
-            <div class="comparison-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>LicenseCore++</th>
-                            <th>Cryptolens</th>
-                            <th>LicenseSpring</th>
-                            <th>KeyGen</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Pricing Model</td>
-                            <td class="highlight">✅ One-time ($199-$1999)</td>
-                            <td>❌ Yearly ($1,188+)</td>
-                            <td>❌ Yearly ($2,388+)</td>
-                            <td>❌ Monthly ($29+)</td>
-                        </tr>
-                        <tr>
-                            <td>HMAC-SHA256 Security</td>
-                            <td class="highlight">✅ Built-in</td>
-                            <td>✅ Available</td>
-                            <td>✅ Available</td>
-                            <td>✅ Available</td>
-                        </tr>
-                        <tr>
-                            <td>WebAssembly Support</td>
-                            <td class="highlight">✅ Native C++ WASM</td>
-                            <td>❌ No</td>
-                            <td>❌ No</td>
-                            <td>❌ Limited</td>
-                        </tr>
-                        <tr>
-                            <td>Hardware Binding</td>
-                            <td class="highlight">✅ Advanced</td>
-                            <td>✅ Basic</td>
-                            <td>✅ Basic</td>
-                            <td>✅ Basic</td>
-                        </tr>
-                        <tr>
-                            <td>Source Code Access</td>
-                            <td class="highlight">✅ Professional+</td>
-                            <td>❌ No</td>
-                            <td>❌ No</td>
-                            <td>❌ No</td>
-                        </tr>
-                        <tr>
-                            <td>Offline Validation</td>
-                            <td class="highlight">✅ Complete</td>
-                            <td>✅ Limited</td>
-                            <td>✅ Limited</td>
-                            <td>✅ Basic</td>
-                        </tr>
-                        <tr>
-                            <td>3-Year Total Cost</td>
-                            <td class="highlight">💰 $899 (Professional)</td>
-                            <td>💸 $3,564</td>
-                            <td>💸 $7,164</td>
-                            <td>💸 $1,044+</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Pricing Section -->
     <section id="pricing" class="pricing-section">
@@ -799,60 +733,7 @@ async function initializeLicensing() {
         </div>
     </section>
 
-    <div class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#demo">Live Demo</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="docs.html">Documentation</a></li>
-                        <li><a href="architecture-en.html">Architecture</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Compare</h4>
-                    <ul>
-                        <li><a href="comparison.html">Full Comparison</a></li>
-                        <li><a href="comparison.html#cryptolens">vs Cryptolens</a></li>
-                        <li><a href="comparison.html#licensespring">vs LicenseSpring</a></li>
-                        <li><a href="comparison.html#keygen">vs KeyGen</a></li>
-                        <li><a href="#competitor-comparison">Why Choose Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="QUICKSTART.md">Quick Start Guide</a></li>
-                        <li><a href="EXAMPLES.md">Code Examples</a></li>
-                        <li><a href="EMBEDDED_GUIDE.md">Embedded Guide</a></li>
-                        <li><a href="OBFUSCATED_GUIDE.md">Security Guide</a></li>
-                        <li><a href="README.md">Full Documentation</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="mailto:sales@licensecore.tech">Contact Sales</a></li>
-                        <li><a href="mailto:support@licensecore.tech">Support</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="sitemap.xml">Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
-                <p>LicenseCore++ - The C++ Software Licensing Library with HMAC-SHA256 Security</p>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Footer -->
     <div class="footer">
@@ -1014,6 +895,43 @@ async function initializeLicensing() {
             </div>
         </div>
     </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-mobile-overlay" id="mobileNavOverlay">
+        <button class="nav-mobile-close" onclick="closeMobileMenu()">&times;</button>
+        <div class="nav-mobile-menu">
+            <a href="#features" class="nav-mobile-link" onclick="closeMobileMenu()">Features</a>
+            <a href="product.html" class="nav-mobile-link" onclick="closeMobileMenu()">Product</a>
+            <a href="#demo" class="nav-mobile-link" onclick="closeMobileMenu()">Live Demo</a>
+            <a href="architecture-en.html" class="nav-mobile-link" onclick="closeMobileMenu()">Architecture</a>
+            <a href="#integration" class="nav-mobile-link" onclick="closeMobileMenu()">Integration</a>
+            <a href="#pricing" class="nav-mobile-link" onclick="closeMobileMenu()">Pricing</a>
+            <a href="docs.html" class="nav-mobile-link" onclick="closeMobileMenu()">Documentation</a>
+            <a href="#contact" class="nav-mobile-link" onclick="closeMobileMenu()">Get Started</a>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Navigation Functions
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
 
     <script src="wasm.js"></script>
 </body>
