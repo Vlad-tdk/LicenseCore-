@@ -300,7 +300,418 @@
             <p>If you've researched software licensing solutions, you've probably encountered the same frustrating pattern:</p>
 
             <ul>
-                <li><strong>Cryptolens:</strong> $1,188/year for basic features ($3,564 over 3 years)</li>
+                <li><strong>Edge computing</strong>: Cloudflare Workers, Fastly</li>
+            </ul>
+
+            <h3>Advanced Features</h3>
+
+            <h4>Self-Destruct Licenses:</h4>
+
+            <div class="code-snippet">
+{
+  "auto_destruct": {
+    "max_runs": 100,
+    "max_days": 30,
+    "triggers": ["debugger_detected", "vm_detected"]
+  }
+}
+            </div>
+
+            <h4>Remote License Revocation:</h4>
+
+            <div class="code-snippet">
+class RevocationChecker {
+public:
+    bool check_revocation_list(const std::string& license_id);
+    void cache_revocation_response(int cache_hours = 24);
+};
+            </div>
+
+            <h2 id="deployment">📋 Deployment Options</h2>
+
+            <p>The project offers several options depending on your needs:</p>
+
+            <div class="feature-showcase">
+                <div class="feature-box">
+                    <span class="feature-icon">💻</span>
+                    <h4>Basic Version</h4>
+                    <ul>
+                        <li>✅ Complete C++ source code</li>
+                        <li>✅ HMAC-SHA256 + Hardware binding</li>
+                        <li>✅ All platform support</li>
+                        <li>✅ WebAssembly demo</li>
+                    </ul>
+                    <p><strong>💰 $199</strong> for Open Source</p>
+                </div>
+
+                <div class="feature-box">
+                    <span class="feature-icon">📦</span>
+                    <h4>Embedded Edition</h4>
+                    <ul>
+                        <li>✅ Lightweight static library (~150KB)</li>
+                        <li>✅ Simple C API for integration</li>
+                        <li>✅ No external dependencies</li>
+                        <li>✅ IoT and embedded systems support</li>
+                    </ul>
+                    <p><strong>💰 $899</strong> for commercial use</p>
+                </div>
+
+                <div class="feature-box">
+                    <span class="feature-icon">🏢</span>
+                    <h4>Enterprise Edition</h4>
+                    <ul>
+                        <li>✅ Everything from Embedded + additional protection layers</li>
+                        <li>✅ Automatic environment verification</li>
+                        <li>✅ Analysis attempt monitoring</li>
+                        <li>✅ Enhanced code obfuscation</li>
+                        <li>✅ 24/7 support and consulting</li>
+                    </ul>
+                    <p><strong>💰 Contact for pricing</strong></p>
+                </div>
+            </div>
+
+            <h3>🎯 When to Choose Which Version?</h3>
+
+            <div class="highlight-callout">
+                <h4>Basic Version — for learning and prototypes:</h4>
+                <ul>
+                    <li>🎓 Educational projects</li>
+                    <li>🛠️ Licensing system prototyping</li>
+                    <li>📚 Open Source projects with optional licensing</li>
+                </ul>
+            </div>
+
+            <div class="warning-callout">
+                <h4>Embedded Edition — for production applications:</h4>
+                <ul>
+                    <li>🖥️ Desktop applications (Windows/macOS/Linux)</li>
+                    <li>📱 Mobile applications with native code</li>
+                    <li>🌐 IoT devices and embedded systems</li>
+                    <li>🛠️ Industrial software and automation</li>
+                </ul>
+            </div>
+
+            <div class="success-callout">
+                <h4>Enterprise Edition — for critical systems:</h4>
+                <ul>
+                    <li>🏦 Financial software and trading platforms</li>
+                    <li>🔒 Cryptographic applications</li>
+                    <li>🎮 Commercial games and entertainment software</li>
+                </ul>
+            </div>
+
+            <h3>💼 Real-World Usage Examples</h3>
+
+            <h4>Case 1: Windows Desktop Application</h4>
+
+            <div class="code-snippet">
+// Simple integration in main.cpp
+#include "license_core_stub.h"
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+                  LPSTR lpCmdLine, int nCmdShow) {
+    // Check license at startup
+    std::ifstream license_file("app.license");
+    if (!license_file || !lc_validate_license(
+        std::string((std::istreambuf_iterator<char>(license_file)),
+                   std::istreambuf_iterator<char>()).c_str())) {
+        MessageBox(NULL, L"License not found", L"Error", MB_OK);
+        return 1;
+    }
+
+    // Check available features
+    bool premium_enabled = lc_has_feature("premium");
+    bool export_enabled = lc_has_feature("export");
+
+    // Run application with corresponding capabilities
+    return run_application(premium_enabled, export_enabled);
+}
+            </div>
+
+            <h4>Case 2: IoT Device on Raspberry Pi</h4>
+
+            <div class="code-snippet">
+// Minimal integration for embedded
+#include <stdio.h>
+#include <stdlib.h>
+#include "license_core_stub.h"
+
+int main() {
+    // Check embedded license
+    extern const char* embedded_license_data; // Embedded in firmware
+
+    if (!lc_validate_license(embedded_license_data)) {
+        printf("Device license validation failed\n");
+        return 1;
+    }
+
+    printf("IoT device licensed to: %s\n", lc_get_hwid());
+
+    // Enable functions based on license
+    if (lc_has_feature("sensors")) {
+        start_sensor_monitoring();
+    }
+    if (lc_has_feature("network")) {
+        start_network_interface();
+    }
+
+    return run_main_loop();
+}
+            </div>
+
+            <h4>Case 3: Enterprise Application with Enhanced Protection</h4>
+
+            <div class="code-snippet">
+// Full integration with monitoring
+class SecureApplication {
+private:
+    EnhancedLicenseManager license_manager_;
+    SecurityMonitor security_;
+
+public:
+    bool initialize() {
+        // Environment check before startup
+        if (!license_manager_.validate_environment()) {
+            log_security_event("Untrusted environment detected");
+            return false;
+        }
+
+        // Runtime integrity check
+        auto status = license_manager_.check_runtime_integrity();
+        if (status.risk_level > SecurityLevel::MEDIUM) {
+            log_security_event("High risk environment detected");
+            return false;
+        }
+
+        // Start security monitoring
+        security_.start_monitoring();
+        return true;
+    }
+
+    void run() {
+        while (running_) {
+            // Periodic security check
+            if (!security_.is_environment_safe()) {
+                log_security_event("Security breach detected");
+                safe_shutdown();
+                break;
+            }
+
+            process_business_logic();
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+    }
+};
+            </div>
+
+            <h2 id="conclusion">📎 Conclusion</h2>
+
+            <p>Over several months of development, I created a sufficiently serious protection system that:</p>
+
+            <ul>
+                <li>✅ <strong>Works everywhere</strong>: C++ applications, browsers, mobile devices</li>
+                <li>✅ <strong>Requires no internet</strong>: Completely autonomous validation</li>
+                <li>✅ <strong>Resistant to basic attacks</strong>: HMAC cryptography + proper architecture</li>
+                <li>✅ <strong>Easy to integrate</strong>: A few lines of code to connect</li>
+                <li>✅ <strong>Scales</strong>: From simple utilities to enterprise solutions</li>
+            </ul>
+
+            <p>If you need a lightweight but serious way to protect your software — use <strong>LicenseCore</strong>. Everything is open source, everything is honest. I don't hide the code because I trust mathematics, not obfuscators.</p>
+
+            <div class="highlight-callout">
+                <h4>🔗 Try it here: <a href="/">licensecore.tech</a></h4>
+                <p>Don't hesitate to ask questions or make suggestions. I'm always happy to get feedback from fellow developers!</p>
+            </div>
+
+            <h3>🧠 Useful Links</h3>
+
+            <ul>
+                <li><strong>API Documentation</strong>: <a href="docs.html">docs.html</a></li>
+                <li><strong>Live Demo</strong>: <a href="/">index.html</a></li>
+                <li><strong>Integration Examples</strong>: <a href="../EXAMPLES.md">EXAMPLES.md</a></li>
+                <li><strong>WASM Guide</strong>: <a href="../WASM_GUIDE.md">WASM_GUIDE.md</a></li>
+            </ul>
+
+            <h3>📸 Code Examples</h3>
+
+            <h4>C++ Integration:</h4>
+
+            <div class="code-snippet">
+#include <license_core/license_manager.hpp>
+#include <iostream>
+#include <fstream>
+
+int main() {
+    try {
+        license_core::LicenseManager manager("your-secret-key");
+
+        std::ifstream file("license.json");
+        std::string license_json((std::istreambuf_iterator<char>(file)),
+                                 std::istreambuf_iterator<char>());
+
+        auto info = manager.load_and_validate(license_json);
+
+        std::cout << "✅ License is valid!" << std::endl;
+        std::cout << "👤 User: " << info.user_id << std::endl;
+        std::cout << "⏰ Valid until: "
+                  << manager.format_iso8601(info.expiry) << std::endl;
+
+        if (manager.has_feature("premium")) {
+            std::cout << "🌟 Premium features active" << std::endl;
+        }
+
+    } catch (const license_core::LicenseException& e) {
+        std::cerr << "❌ License error: " << e.what() << std::endl;
+        return 1;
+    }
+
+    return 0;
+}
+            </div>
+
+            <h4>JavaScript Integration:</h4>
+
+            <div class="code-snippet">
+// Import demo version (or WASM if available)
+import { LicenseCoreDemo } from './demo.js';
+
+async function validateLicense(licenseJson) {
+    try {
+        const manager = new LicenseCoreDemo();
+
+        const result = await manager.validateLicense(licenseJson);
+
+        console.log('✅ License is valid!');
+        console.log('👤 User:', result.user_id);
+
+        if (await manager.hasFeature('premium')) {
+            enablePremiumFeatures();
+        }
+
+    } catch (error) {
+        console.error('❌ License error:', error.message);
+        showLicenseDialog();
+    }
+}
+            </div>
+
+            <h4>Python Integration (via ctypes):</h4>
+
+            <div class="code-snippet">
+import ctypes
+import json
+from pathlib import Path
+
+# Load library
+lib = ctypes.CDLL('./liblicensecore.so')
+
+# Set up functions
+lib.validate_license.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
+lib.validate_license.restype = ctypes.c_bool
+
+def validate_license(license_json: str, secret_key: str) -> bool:
+    return lib.validate_license(
+        license_json.encode('utf-8'),
+        secret_key.encode('utf-8')
+    )
+
+# Usage
+license_data = Path('license.json').read_text()
+if validate_license(license_data, "your-secret-key"):
+    print("✅ License is valid!")
+else:
+    print("❌ License is invalid!")
+            </div>
+
+            <div class="author-bio">
+                <h4>About the Author</h4>
+                <p><strong>Vlad</strong> - System software developer with focus on security and cross-platform solutions. Creator of LicenseCore++ and advocate for accessible software protection that doesn't break the bank.</p>
+                <p>Have questions about the technical implementation? Feel free to reach out at <a href="mailto:vlad@licensecore.tech">vlad@licensecore.tech</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/#features">Features</a></li>
+                        <li><a href="/#demo">Live Demo</a></li>
+                        <li><a href="/#pricing">Pricing</a></li>
+                        <li><a href="docs.html">Documentation</a></li>
+                        <li><a href="architecture-en.html">Architecture</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Compare</h4>
+                    <ul>
+                        <li><a href="comparison.html">Full Comparison</a></li>
+                        <li><a href="comparison.html#cryptolens">vs Cryptolens</a></li>
+                        <li><a href="comparison.html#licensespring">vs LicenseSpring</a></li>
+                        <li><a href="comparison.html#keygen">vs KeyGen</a></li>
+                        <li><a href="/#competitor-comparison">Why Choose Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="QUICKSTART.md">Quick Start Guide</a></li>
+                        <li><a href="EXAMPLES.md">Code Examples</a></li>
+                        <li><a href="EMBEDDED_GUIDE.md">Embedded Guide</a></li>
+                        <li><a href="OBFUSCATED_GUIDE.md">Security Guide</a></li>
+                        <li><a href="README.md">Full Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="mailto:sales@licensecore.tech">Contact Sales</a></li>
+                        <li><a href="mailto:support@licensecore.tech">Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="sitemap.xml">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
+                <p>LicenseCore++ - The C++ Software Licensing Library with HMAC-SHA256 Security</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Navigation Functions
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
+
+    <script src="wasm.js"></script>
+</body>
+</html>>Cryptolens:</strong> $1,188/year for basic features ($3,564 over 3 years)</li>
                 <li><strong>LicenseSpring:</strong> $2,388/year for professional features ($7,164 over 3 years)</li>
                 <li><strong>KeyGen:</strong> $29/month with limited offline capabilities ($1,044+ over 3 years)</li>
             </ul>
