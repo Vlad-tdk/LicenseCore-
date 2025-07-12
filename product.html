@@ -593,7 +593,76 @@ public:
                 <p>Ready to protect your software with enterprise-grade security? Start with our live demo or dive straight into the documentation.</p>
                 
                 <div class="cta-buttons">
-                    <a href="/#demo" class="btn-white">Live Demo</a>
+                    <a href="/#pricing" class="btn-outline">View Pricing</a>
+                </div>
+            </div>
+
+            <div class="author-bio">
+                <h4>About the Author</h4>
+                <p><strong>Vlad</strong> - Systems software developer with focus on security and cross-platform solutions. Creator of LicenseCore++ and advocate for accessible software protection that doesn't break the bank.</p>
+                <p>Have questions about the technical implementation? Feel free to reach out at <a href="mailto:vlad@licensecore.tech">vlad@licensecore.tech</a></p>
+                <p><em>Don't hesitate to ask questions or make suggestions. I'm always happy to get feedback from fellow developers!</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/#features">Features</a></li>
+                        <li><a href="/#demo">Live Demo</a></li>
+                        <li><a href="/#pricing">Pricing</a></li>
+                        <li><a href="docs.html">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="QUICKSTART.md">Quick Start Guide</a></li>
+                        <li><a href="EXAMPLES_EN.md">Code Examples</a></li>
+                        <li><a href="EMBEDDED_GUIDE_EN.md">Embedded Guide</a></li>
+                        <li><a href="README.md">Full Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="mailto:support@licensecore.tech">Support</a></li>
+                        <li><a href="sitemap.xml">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>demo" class="btn-white">Live Demo</a>
                     <a href="docs.html" class="btn-outline">Documentation</a>
                     <a href="/#pricing" class="btn-outline">View Pricing</a>
                 </div>
@@ -714,6 +783,90 @@ else:
                         <li><a href="/#demo">Live Demo</a></li>
                         <li><a href="/#pricing">Pricing</a></li>
                         <li><a href="docs.html">Documentation</a></li>
+                        <li><a href="architecture-en.html">Architecture</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Compare</h4>
+                    <ul>
+                        <li><a href="comparison.html">Full Comparison</a></li>
+                        <li><a href="comparison.html#cryptolens">vs Cryptolens</a></li>
+                        <li><a href="comparison.html#licensespring">vs LicenseSpring</a></li>
+                        <li><a href="comparison.html#keygen">vs KeyGen</a></li>
+                        <li><a href="/#competitor-comparison">Why Choose Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="QUICKSTART.md">Quick Start Guide</a></li>
+                        <li><a href="EXAMPLES_EN.md">Code Examples</a></li>
+                        <li><a href="EMBEDDED_GUIDE_EN.md">Embedded Guide</a></li>
+                        <li><a href="OBFUSCATED_GUIDE_EN.md">Security Guide</a></li>
+                        <li><a href="README.md">Full Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="mailto:sales@licensecore.tech">Contact Sales</a></li>
+                        <li><a href="mailto:support@licensecore.tech">Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="sitemap.xml">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
+                <p>LicenseCore++ - The C++ Software Licensing Library with HMAC-SHA256 Security</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Navigation Functions
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script src="wasm.js"></script>
+</body>
+</html><a href="docs.html">Documentation</a></li>
                         <li><a href="architecture-en.html">Architecture</a></li>
                     </ul>
                 </div>
