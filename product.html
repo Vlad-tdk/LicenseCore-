@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LicenseCore++ Product Overview: Professional C++ Software Licensing Solution</title>
+    <title>Building a Modern Software Protection System: The LicenseCore Architecture</title>
     <meta name="description" content="Discover LicenseCore++ - the professional C++ software licensing library that saves developers $3000+ yearly. HMAC-SHA256 security, WebAssembly support, one-time payment.">
     <meta name="keywords" content="LicenseCore++ product, C++ licensing library, software protection solution, HMAC-SHA256 licensing, WebAssembly licensing, Cryptolens alternative, LicenseSpring alternative">
     <link rel="stylesheet" href="style.css">
@@ -87,11 +87,27 @@
             padding: 2rem;
             margin: 2rem 0;
             overflow-x: auto;
-            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
             border-left: 4px solid var(--primary);
+            white-space: pre;
+            word-wrap: break-word;
         }
+        
+        .code-snippet code {
+            color: #e2e8f0;
+            font-family: inherit;
+            font-size: inherit;
+        }
+        
+        /* Syntax highlighting colors */
+        .code-snippet .keyword { color: #c792ea; }
+        .code-snippet .string { color: #c3e88d; }
+        .code-snippet .comment { color: #546e7a; font-style: italic; }
+        .code-snippet .function { color: #82aaff; }
+        .code-snippet .number { color: #f78c6c; }
+        .code-snippet .operator { color: #89ddff; }
         
         .highlight-callout {
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
@@ -240,6 +256,31 @@
             
             .cta-buttons {
                 flex-direction: column;
+            }
+            
+            .code-snippet {
+                padding: 1.5rem;
+                font-size: 0.85rem;
+                margin: 1.5rem 0;
+                border-radius: 8px;
+                line-height: 1.6;
+            }
+            
+            .highlight-callout,
+            .warning-callout,
+            .success-callout {
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+            }
+            
+            .blog-content h2 {
+                font-size: 1.75rem;
+                margin: 2rem 0 1rem 0;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.5rem;
+                margin: 1.5rem 0 0.75rem 0;
             }
         }
     </style>
