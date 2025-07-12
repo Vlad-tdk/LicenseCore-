@@ -25,6 +25,14 @@
         <priority>0.9</priority>
     </url>
     
+    <!-- Product overview page - high priority for SEO -->
+    <url>
+        <loc>https://www.licensecore.tech/product.html</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
     <!-- Comparison page - high priority for SEO -->
     <url>
         <loc>https://www.licensecore.tech/comparison.html</loc>
