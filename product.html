@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Building a Modern Software Protection System: The LicenseCore Architecture</title>
-    <meta name="description" content="Discover LicenseCore++ - the professional C++ software licensing library that saves developers $3000+ yearly. HMAC-SHA256 security, WebAssembly support, one-time payment.">
-    <meta name="keywords" content="LicenseCore++ product, C++ licensing library, software protection solution, HMAC-SHA256 licensing, WebAssembly licensing, Cryptolens alternative, LicenseSpring alternative">
+    <meta name="description"
+        content="Discover LicenseCore++ - the professional C++ software licensing library that saves developers $3000+ yearly. HMAC-SHA256 security, WebAssembly support, one-time payment.">
+    <meta name="keywords"
+        content="LicenseCore++ product, C++ licensing library, software protection solution, HMAC-SHA256 licensing, WebAssembly licensing, Cryptolens alternative, LicenseSpring alternative">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔐%3C/text%3E%3C/svg%3E">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔐%3C/text%3E%3C/svg%3E">
+
     <style>
         .blog-container {
             max-width: 800px;
@@ -23,14 +28,14 @@
             margin-top: 120px;
             margin-bottom: 4rem;
         }
-        
+
         .blog-header {
             text-align: center;
             margin-bottom: 3rem;
             padding-bottom: 2rem;
             border-bottom: 2px solid var(--gray-200);
         }
-        
+
         .blog-title {
             font-size: 3rem;
             font-weight: 800;
@@ -38,20 +43,20 @@
             margin-bottom: 1rem;
             line-height: 1.1;
         }
-        
+
         .blog-subtitle {
             font-size: 1.25rem;
             color: var(--gray-600);
             margin-bottom: 2rem;
             line-height: 1.6;
         }
-        
+
         .blog-content {
             line-height: 1.8;
             color: var(--gray-800);
             font-size: 1.1rem;
         }
-        
+
         .blog-content h2 {
             font-size: 2.25rem;
             font-weight: 700;
@@ -60,26 +65,26 @@
             border-left: 4px solid var(--primary);
             padding-left: 1rem;
         }
-        
+
         .blog-content h3 {
             font-size: 1.75rem;
             font-weight: 600;
             color: var(--gray-900);
             margin: 2.5rem 0 1rem 0;
         }
-        
+
         .blog-content p {
             margin-bottom: 1.5rem;
         }
-        
+
         .blog-content ul {
             margin: 1rem 0 1.5rem 2rem;
         }
-        
+
         .blog-content li {
             margin-bottom: 0.75rem;
         }
-        
+
         .code-snippet {
             background: var(--gray-900);
             color: #e2e8f0;
@@ -94,21 +99,39 @@
             white-space: pre;
             word-wrap: break-word;
         }
-        
+
         .code-snippet code {
             color: #e2e8f0;
             font-family: inherit;
             font-size: inherit;
         }
-        
+
         /* Syntax highlighting colors */
-        .code-snippet .keyword { color: #c792ea; }
-        .code-snippet .string { color: #c3e88d; }
-        .code-snippet .comment { color: #546e7a; font-style: italic; }
-        .code-snippet .function { color: #82aaff; }
-        .code-snippet .number { color: #f78c6c; }
-        .code-snippet .operator { color: #89ddff; }
-        
+        .code-snippet .keyword {
+            color: #c792ea;
+        }
+
+        .code-snippet .string {
+            color: #c3e88d;
+        }
+
+        .code-snippet .comment {
+            color: #546e7a;
+            font-style: italic;
+        }
+
+        .code-snippet .function {
+            color: #82aaff;
+        }
+
+        .code-snippet .number {
+            color: #f78c6c;
+        }
+
+        .code-snippet .operator {
+            color: #89ddff;
+        }
+
         .highlight-callout {
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
             border: 1px solid rgba(37, 99, 235, 0.2);
@@ -117,19 +140,19 @@
             margin: 2rem 0;
             border-left: 4px solid var(--primary);
         }
-        
+
         .highlight-callout h4 {
             color: var(--primary);
             margin-top: 0;
         }
-        
+
         .feature-showcase {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
-        
+
         .feature-box {
             background: var(--gray-50);
             padding: 2rem;
@@ -137,19 +160,19 @@
             border: 2px solid var(--gray-200);
             transition: all 0.3s ease;
         }
-        
+
         .feature-box:hover {
             transform: translateY(-4px);
             box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
             border-color: var(--primary);
         }
-        
+
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             display: block;
         }
-        
+
         .comparison-chart {
             background: white;
             border-radius: 12px;
@@ -158,12 +181,12 @@
             box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
             overflow-x: auto;
         }
-        
+
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         .comparison-table th {
             background: var(--gradient);
             color: white;
@@ -171,18 +194,18 @@
             text-align: left;
             font-weight: 600;
         }
-        
+
         .comparison-table td {
             padding: 1rem;
             border-bottom: 1px solid var(--gray-200);
         }
-        
+
         .comparison-table .winner {
             background: rgba(5, 150, 105, 0.1);
             color: var(--success);
             font-weight: 600;
         }
-        
+
         .cta-section {
             background: var(--gradient);
             color: white;
@@ -191,7 +214,7 @@
             text-align: center;
             margin: 3rem 0;
         }
-        
+
         .cta-buttons {
             margin-top: 2rem;
             display: flex;
@@ -199,7 +222,7 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
         .btn-white {
             background: white;
             color: var(--primary);
@@ -210,12 +233,12 @@
             transition: all 0.3s ease;
             border: 2px solid white;
         }
-        
+
         .btn-white:hover {
             background: transparent;
             color: white;
         }
-        
+
         .btn-outline {
             background: transparent;
             color: white;
@@ -226,12 +249,12 @@
             border: 2px solid white;
             transition: all 0.3s ease;
         }
-        
+
         .btn-outline:hover {
             background: white;
             color: var(--primary);
         }
-        
+
         .author-bio {
             background: var(--gray-50);
             border-radius: 12px;
@@ -239,25 +262,25 @@
             margin: 3rem 0;
             border-left: 4px solid var(--primary);
         }
-        
+
         @media (max-width: 768px) {
             .blog-container {
                 margin: 100px 1rem 2rem 1rem;
                 padding: 1.5rem;
             }
-            
+
             .blog-title {
                 font-size: 2.25rem;
             }
-            
+
             .feature-showcase {
                 grid-template-columns: 1fr;
             }
-            
+
             .cta-buttons {
                 flex-direction: column;
             }
-            
+
             .code-snippet {
                 padding: 1.5rem;
                 font-size: 0.85rem;
@@ -265,19 +288,19 @@
                 border-radius: 8px;
                 line-height: 1.6;
             }
-            
+
             .highlight-callout,
             .warning-callout,
             .success-callout {
                 padding: 1.5rem;
                 margin: 1.5rem 0;
             }
-            
+
             .blog-content h2 {
                 font-size: 1.75rem;
                 margin: 2rem 0 1rem 0;
             }
-            
+
             .blog-content h3 {
                 font-size: 1.5rem;
                 margin: 1.5rem 0 0.75rem 0;
@@ -319,7 +342,8 @@
                     </a>
                     <meta itemprop="position" content="1" />
                 </li>
-                <li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <li class="breadcrumb-item active" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
                     <span itemprop="name">Product Overview</span>
                     <meta itemprop="position" content="2" />
                 </li>
@@ -330,15 +354,19 @@
     <div class="blog-container">
         <div class="blog-header">
             <h1 class="blog-title">LicenseCore++: The Software Licensing Solution That Saves You $3,000+ Yearly</h1>
-            <p class="blog-subtitle">Discover why thousands of developers chose our enterprise-grade C++ licensing library over expensive subscription-based alternatives like Cryptolens and LicenseSpring.</p>
+            <p class="blog-subtitle">Discover why thousands of developers chose our enterprise-grade C++ licensing
+                library over expensive subscription-based alternatives like Cryptolens and LicenseSpring.</p>
         </div>
 
         <div class="blog-content">
             <h2>🚀 The Problem Every Software Developer Faces</h2>
-            
-            <p>You've built amazing software. Invested months of your life perfecting every feature. But then reality hits: how do you protect your intellectual property from piracy while keeping your licensing costs reasonable?</p>
 
-            <p>If you've researched software licensing solutions, you've probably encountered the same frustrating pattern:</p>
+            <p>You've built amazing software. Invested months of your life perfecting every feature. But then reality
+                hits: how do you protect your intellectual property from piracy while keeping your licensing costs
+                reasonable?</p>
+
+            <p>If you've researched software licensing solutions, you've probably encountered the same frustrating
+                pattern:</p>
 
             <ul>
                 <li><strong>Edge computing</strong>: Cloudflare Workers, Fastly</li>
@@ -349,23 +377,23 @@
             <h4>Self-Destruct Licenses:</h4>
 
             <div class="code-snippet">
-{
-  "auto_destruct": {
-    "max_runs": 100,
-    "max_days": 30,
-    "triggers": ["debugger_detected", "vm_detected"]
-  }
-}
+                {
+                "auto_destruct": {
+                "max_runs": 100,
+                "max_days": 30,
+                "triggers": ["debugger_detected", "vm_detected"]
+                }
+                }
             </div>
 
             <h4>Remote License Revocation:</h4>
 
             <div class="code-snippet">
-class RevocationChecker {
-public:
-    bool check_revocation_list(const std::string& license_id);
-    void cache_revocation_response(int cache_hours = 24);
-};
+                class RevocationChecker {
+                public:
+                bool check_revocation_list(const std::string& license_id);
+                void cache_revocation_response(int cache_hours = 24);
+                };
             </div>
 
             <h2 id="deployment">📋 Deployment Options</h2>
@@ -434,139 +462,140 @@ public:
             <h4>Case 1: Windows Desktop Application</h4>
 
             <div class="code-snippet">// Simple integration in main.cpp
-#include "license_core_stub.h"
+                #include "license_core_stub.h"
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-                  LPSTR lpCmdLine, int nCmdShow) {
-    // Check license at startup
-    std::ifstream license_file("app.license");
-    if (!license_file || !lc_validate_license(
-        std::string((std::istreambuf_iterator&lt;char&gt;(license_file)),
-                   std::istreambuf_iterator&lt;char&gt;()).c_str())) {
-        MessageBox(NULL, L"License not found", L"Error", MB_OK);
-        return 1;
-    }
+                int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+                LPSTR lpCmdLine, int nCmdShow) {
+                // Check license at startup
+                std::ifstream license_file("app.license");
+                if (!license_file || !lc_validate_license(
+                std::string((std::istreambuf_iterator&lt;char&gt;(license_file)),
+                std::istreambuf_iterator&lt;char&gt;()).c_str())) {
+                MessageBox(NULL, L"License not found", L"Error", MB_OK);
+                return 1;
+                }
 
-    // Check available features
-    bool premium_enabled = lc_has_feature("premium");
-    bool export_enabled = lc_has_feature("export");
+                // Check available features
+                bool premium_enabled = lc_has_feature("premium");
+                bool export_enabled = lc_has_feature("export");
 
-    // Run application with corresponding capabilities
-    return run_application(premium_enabled, export_enabled);
-}</div>
+                // Run application with corresponding capabilities
+                return run_application(premium_enabled, export_enabled);
+                }</div>
 
             <h4>Case 2: IoT Device on Raspberry Pi</h4>
 
             <div class="code-snippet">// Minimal integration for embedded
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include "license_core_stub.h"
+                #include &lt;stdio.h&gt;
+                #include &lt;stdlib.h&gt;
+                #include "license_core_stub.h"
 
-int main() {
-    // Check embedded license
-    extern const char* embedded_license_data; // Embedded in firmware
+                int main() {
+                // Check embedded license
+                extern const char* embedded_license_data; // Embedded in firmware
 
-    if (!lc_validate_license(embedded_license_data)) {
-        printf("Device license validation failed\n");
-        return 1;
-    }
+                if (!lc_validate_license(embedded_license_data)) {
+                printf("Device license validation failed\n");
+                return 1;
+                }
 
-    printf("IoT device licensed to: %s\n", lc_get_hwid());
+                printf("IoT device licensed to: %s\n", lc_get_hwid());
 
-    // Enable functions based on license
-    if (lc_has_feature("sensors")) {
-        start_sensor_monitoring();
-    }
-    if (lc_has_feature("network")) {
-        start_network_interface();
-    }
+                // Enable functions based on license
+                if (lc_has_feature("sensors")) {
+                start_sensor_monitoring();
+                }
+                if (lc_has_feature("network")) {
+                start_network_interface();
+                }
 
-    return run_main_loop();
-}</div>
+                return run_main_loop();
+                }</div>
 
             <h4>Case 3: Enterprise Application with Enhanced Protection</h4>
 
             <div class="code-snippet">// Full integration with monitoring
-class SecureApplication {
-private:
-    EnhancedLicenseManager license_manager_;
-    SecurityMonitor security_;
+                class SecureApplication {
+                private:
+                EnhancedLicenseManager license_manager_;
+                SecurityMonitor security_;
 
-public:
-    bool initialize() {
-        // Environment check before startup
-        if (!license_manager_.validate_environment()) {
-            log_security_event("Untrusted environment detected");
-            return false;
-        }
+                public:
+                bool initialize() {
+                // Environment check before startup
+                if (!license_manager_.validate_environment()) {
+                log_security_event("Untrusted environment detected");
+                return false;
+                }
 
-        // Runtime integrity check
-        auto status = license_manager_.check_runtime_integrity();
-        if (status.risk_level > SecurityLevel::MEDIUM) {
-            log_security_event("High risk environment detected");
-            return false;
-        }
+                // Runtime integrity check
+                auto status = license_manager_.check_runtime_integrity();
+                if (status.risk_level > SecurityLevel::MEDIUM) {
+                log_security_event("High risk environment detected");
+                return false;
+                }
 
-        // Start security monitoring
-        security_.start_monitoring();
-        return true;
-    }
+                // Start security monitoring
+                security_.start_monitoring();
+                return true;
+                }
 
-    void run() {
-        while (running_) {
-            // Periodic security check
-            if (!security_.is_environment_safe()) {
+                void run() {
+                while (running_) {
+                // Periodic security check
+                if (!security_.is_environment_safe()) {
                 log_security_event("Security breach detected");
                 safe_shutdown();
                 break;
-            }
+                }
 
-            process_business_logic();
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        }
-    }
-};</div>
+                process_business_logic();
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                }
+                }
+                };</div>
 
             <h2>🚀 Advanced Features and Future Plans</h2>
 
             <h3>Enhanced Hardware Fingerprinting</h3>
 
             <div class="code-snippet">// Configurable hardware components for fingerprint
-HardwareConfig config;
-config.use_cpu_id = true;              // CPU ID
-config.use_mac_address = true;         // MAC address
-config.use_volume_serial = true;       // Disk serial number
-config.use_motherboard_serial = false; // Motherboard (optional)
+                HardwareConfig config;
+                config.use_cpu_id = true; // CPU ID
+                config.use_mac_address = true; // MAC address
+                config.use_volume_serial = true; // Disk serial number
+                config.use_motherboard_serial = false; // Motherboard (optional)
 
-// Caching for performance
-config.enable_caching = true;
-config.cache_lifetime = std::chrono::minutes(5);
-config.thread_safe_cache = true;
+                // Caching for performance
+                config.enable_caching = true;
+                config.cache_lifetime = std::chrono::minutes(5);
+                config.thread_safe_cache = true;
 
-HardwareFingerprint fingerprint(config);
-std::string hwid = fingerprint.get_fingerprint();</div>
+                HardwareFingerprint fingerprint(config);
+                std::string hwid = fingerprint.get_fingerprint();</div>
 
             <h3>Self-Destruct Licenses</h3>
 
             <div class="code-snippet">{
-  "auto_destruct": {
-    "max_runs": 100,
-    "max_days": 30,
-    "triggers": ["debugger_detected", "vm_detected"]
-  }
-}</div>
+                "auto_destruct": {
+                "max_runs": 100,
+                "max_days": 30,
+                "triggers": ["debugger_detected", "vm_detected"]
+                }
+                }</div>
 
             <h3>Remote License Revocation</h3>
 
             <div class="code-snippet">class RevocationChecker {
-public:
-    bool check_revocation_list(const std::string& license_id);
-    void cache_revocation_response(int cache_hours = 24);
-};</div>
+                public:
+                bool check_revocation_list(const std::string& license_id);
+                void cache_revocation_response(int cache_hours = 24);
+                };</div>
 
             <h3>WebAssembly with WASI Support</h3>
 
-            <p>Current demo version works only in browsers with JavaScript fallback. Plans to add real WASM build for use in:</p>
+            <p>Current demo version works only in browsers with JavaScript fallback. Plans to add real WASM build for
+                use in:</p>
 
             <ul>
                 <li><strong>Browsers</strong>: Real C++ code via WebAssembly</li>
@@ -586,12 +615,15 @@ public:
                 <li>✅ <strong>Scales</strong>: From simple utilities to enterprise solutions</li>
             </ul>
 
-            <p>If you need a lightweight but serious way to protect your software — use <strong>LicenseCore</strong>. Everything is open source, everything is honest. I don't hide the code because I trust mathematics, not obfuscators.</p>
+            <p>If you need a lightweight but serious way to protect your software — use <strong>LicenseCore</strong>.
+                Everything is open source, everything is honest. I don't hide the code because I trust mathematics, not
+                obfuscators.</p>
 
             <div class="cta-section">
                 <h3>🔗 Try LicenseCore++ Today</h3>
-                <p>Ready to protect your software with enterprise-grade security? Start with our live demo or dive straight into the documentation.</p>
-                
+                <p>Ready to protect your software with enterprise-grade security? Start with our live demo or dive
+                    straight into the documentation.</p>
+
                 <div class="cta-buttons">
                     <a href="/#pricing" class="btn-outline">View Pricing</a>
                 </div>
@@ -599,9 +631,13 @@ public:
 
             <div class="author-bio">
                 <h4>About the Author</h4>
-                <p><strong>Vlad</strong> - Systems software developer with focus on security and cross-platform solutions. Creator of LicenseCore++ and advocate for accessible software protection that doesn't break the bank.</p>
-                <p>Have questions about the technical implementation? Feel free to reach out at <a href="mailto:vlad@licensecore.tech">vlad@licensecore.tech</a></p>
-                <p><em>Don't hesitate to ask questions or make suggestions. I'm always happy to get feedback from fellow developers!</em></p>
+                <p><strong>Vlad</strong> - Systems software developer with focus on security and cross-platform
+                    solutions. Creator of LicenseCore++ and advocate for accessible software protection that doesn't
+                    break the bank.</p>
+                <p>Have questions about the technical implementation? Feel free to reach out at <a
+                        href="mailto:vlad@licensecore.tech">vlad@licensecore.tech</a></p>
+                <p><em>Don't hesitate to ask questions or make suggestions. I'm always happy to get feedback from fellow
+                        developers!</em></p>
             </div>
         </div>
     </div>
@@ -619,7 +655,7 @@ public:
                         <li><a href="docs.html">Documentation</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Resources</h4>
                     <ul>
@@ -629,7 +665,7 @@ public:
                         <li><a href="README.md">Full Documentation</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul>
@@ -638,7 +674,7 @@ public:
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
             </div>
@@ -662,922 +698,5 @@ public:
     </script>
 
 </body>
-</html>demo" class="btn-white">Live Demo</a>
-                    <a href="docs.html" class="btn-outline">Documentation</a>
-                    <a href="/#pricing" class="btn-outline">View Pricing</a>
-                </div>
-            </div>
 
-            <h3>🧠 Useful Resources</h3>
-
-            <ul>
-                <li><strong>API Documentation</strong>: <a href="docs.html">Complete API Reference</a></li>
-                <li><strong>Live Demo</strong>: <a href="/">Interactive Browser Demo</a></li>
-                <li><strong>Integration Examples</strong>: <a href="EXAMPLES_EN.md">Code Examples</a></li>
-                <li><strong>WASM Guide</strong>: <a href="WASM_GUIDE_EN.md">WebAssembly Integration</a></li>
-                <li><strong>Embedded Guide</strong>: <a href="EMBEDDED_GUIDE_EN.md">IoT and Embedded Systems</a></li>
-            </ul>
-
-            <h3>📸 Quick Integration Examples</h3>
-
-            <h4>C++ Integration:</h4>
-
-            <div class="code-snippet">#include &lt;license_core/license_manager.hpp&gt;
-#include &lt;iostream&gt;
-#include &lt;fstream&gt;
-
-int main() {
-    try {
-        license_core::LicenseManager manager("your-secret-key");
-
-        std::ifstream file("license.json");
-        std::string license_json((std::istreambuf_iterator&lt;char&gt;(file)),
-                                 std::istreambuf_iterator&lt;char&gt;());
-
-        auto info = manager.load_and_validate(license_json);
-
-        std::cout << "✅ License is valid!" << std::endl;
-        std::cout << "👤 User: " << info.user_id << std::endl;
-        std::cout << "⏰ Valid until: "
-                  << manager.format_iso8601(info.expiry) << std::endl;
-
-        if (manager.has_feature("premium")) {
-            std::cout << "🌟 Premium features active" << std::endl;
-        }
-
-    } catch (const license_core::LicenseException& e) {
-        std::cerr << "❌ License error: " << e.what() << std::endl;
-        return 1;
-    }
-
-    return 0;
-}</div>
-
-            <h4>JavaScript Integration:</h4>
-
-            <div class="code-snippet">// Import demo version (or WASM if available)
-import { LicenseCoreDemo } from './demo.js';
-
-async function validateLicense(licenseJson) {
-    try {
-        const manager = new LicenseCoreDemo();
-
-        const result = await manager.validateLicense(licenseJson);
-
-        console.log('✅ License is valid!');
-        console.log('👤 User:', result.user_id);
-
-        if (await manager.hasFeature('premium')) {
-            enablePremiumFeatures();
-        }
-
-    } catch (error) {
-        console.error('❌ License error:', error.message);
-        showLicenseDialog();
-    }
-}</div>
-
-            <h4>Python Integration (via ctypes):</h4>
-
-            <div class="code-snippet">import ctypes
-import json
-from pathlib import Path
-
-# Load library
-lib = ctypes.CDLL('./liblicensecore.so')
-
-# Set up functions
-lib.validate_license.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
-lib.validate_license.restype = ctypes.c_bool
-
-def validate_license(license_json: str, secret_key: str) -> bool:
-    return lib.validate_license(
-        license_json.encode('utf-8'),
-        secret_key.encode('utf-8')
-    )
-
-# Usage
-license_data = Path('license.json').read_text()
-if validate_license(license_data, "your-secret-key"):
-    print("✅ License is valid!")
-else:
-    print("❌ License is invalid!")</div>
-
-            <div class="author-bio">
-                <h4>About the Author</h4>
-                <p><strong>Vlad</strong> - Systems software developer with focus on security and cross-platform solutions. Creator of LicenseCore++ and advocate for accessible software protection that doesn't break the bank.</p>
-                <p>Have questions about the technical implementation? Feel free to reach out at <a href="mailto:vlad@licensecore.tech">vlad@licensecore.tech</a></p>
-                <p><em>Don't hesitate to ask questions or make suggestions. I'm always happy to get feedback from fellow developers!</em></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="/#features">Features</a></li>
-                        <li><a href="/#demo">Live Demo</a></li>
-                        <li><a href="/#pricing">Pricing</a></li>
-                        <li><a href="docs.html">Documentation</a></li>
-                        <li><a href="architecture-en.html">Architecture</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Compare</h4>
-                    <ul>
-                        <li><a href="comparison.html">Full Comparison</a></li>
-                        <li><a href="comparison.html#cryptolens">vs Cryptolens</a></li>
-                        <li><a href="comparison.html#licensespring">vs LicenseSpring</a></li>
-                        <li><a href="comparison.html#keygen">vs KeyGen</a></li>
-                        <li><a href="/#competitor-comparison">Why Choose Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="QUICKSTART.md">Quick Start Guide</a></li>
-                        <li><a href="EXAMPLES_EN.md">Code Examples</a></li>
-                        <li><a href="EMBEDDED_GUIDE_EN.md">Embedded Guide</a></li>
-                        <li><a href="OBFUSCATED_GUIDE_EN.md">Security Guide</a></li>
-                        <li><a href="README.md">Full Documentation</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="mailto:sales@licensecore.tech">Contact Sales</a></li>
-                        <li><a href="mailto:support@licensecore.tech">Support</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="sitemap.xml">Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
-                <p>LicenseCore++ - The C++ Software Licensing Library with HMAC-SHA256 Security</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Mobile Navigation Functions
-        function toggleMobileMenu() {
-            const overlay = document.getElementById('mobileNavOverlay');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMobileMenu() {
-            const overlay = document.getElementById('mobileNavOverlay');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Close mobile menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeMobileMenu();
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-
-    <script src="wasm.js"></script>
-</body>
-</html><a href="docs.html">Documentation</a></li>
-                        <li><a href="architecture-en.html">Architecture</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Compare</h4>
-                    <ul>
-                        <li><a href="comparison.html">Full Comparison</a></li>
-                        <li><a href="comparison.html#cryptolens">vs Cryptolens</a></li>
-                        <li><a href="comparison.html#licensespring">vs LicenseSpring</a></li>
-                        <li><a href="comparison.html#keygen">vs KeyGen</a></li>
-                        <li><a href="/#competitor-comparison">Why Choose Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="QUICKSTART.md">Quick Start Guide</a></li>
-                        <li><a href="EXAMPLES_EN.md">Code Examples</a></li>
-                        <li><a href="EMBEDDED_GUIDE_EN.md">Embedded Guide</a></li>
-                        <li><a href="OBFUSCATED_GUIDE_EN.md">Security Guide</a></li>
-                        <li><a href="README.md">Full Documentation</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="mailto:sales@licensecore.tech">Contact Sales</a></li>
-                        <li><a href="mailto:support@licensecore.tech">Support</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="sitemap.xml">Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
-                <p>LicenseCore++ - The C++ Software Licensing Library with HMAC-SHA256 Security</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Mobile Navigation Functions
-        function toggleMobileMenu() {
-            const overlay = document.getElementById('mobileNavOverlay');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMobileMenu() {
-            const overlay = document.getElementById('mobileNavOverlay');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Close mobile menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeMobileMenu();
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-
-    <script src="wasm.js"></script>
-</body>
-</html>💻</span>
-                    <h4>Basic Version</h4>
-                    <ul>
-                        <li>✅ Complete C++ source code</li>
-                        <li>✅ HMAC-SHA256 + Hardware binding</li>
-                        <li>✅ All platform support</li>
-                        <li>✅ WebAssembly demo</li>
-                    </ul>
-                    <p><strong>💰 $199</strong> for Open Source</p>
-                </div>
-
-                <div class="feature-box">
-                    <span class="feature-icon">📦</span>
-                    <h4>Embedded Edition</h4>
-                    <ul>
-                        <li>✅ Lightweight static library (~150KB)</li>
-                        <li>✅ Simple C API for integration</li>
-                        <li>✅ No external dependencies</li>
-                        <li>✅ IoT and embedded systems support</li>
-                    </ul>
-                    <p><strong>💰 $899</strong> for commercial use</p>
-                </div>
-
-                <div class="feature-box">
-                    <span class="feature-icon">🏢</span>
-                    <h4>Enterprise Edition</h4>
-                    <ul>
-                        <li>✅ Everything from Embedded + additional protection layers</li>
-                        <li>✅ Automatic environment verification</li>
-                        <li>✅ Analysis attempt monitoring</li>
-                        <li>✅ Enhanced code obfuscation</li>
-                        <li>✅ 24/7 support and consulting</li>
-                    </ul>
-                    <p><strong>💰 Contact for pricing</strong></p>
-                </div>
-            </div>
-
-            <h3>🎯 When to Choose Which Version?</h3>
-
-            <div class="highlight-callout">
-                <h4>Basic Version — for learning and prototypes:</h4>
-                <ul>
-                    <li>🎓 Educational projects</li>
-                    <li>🛠️ Licensing system prototyping</li>
-                    <li>📚 Open Source projects with optional licensing</li>
-                </ul>
-            </div>
-
-            <div class="warning-callout">
-                <h4>Embedded Edition — for production applications:</h4>
-                <ul>
-                    <li>🖥️ Desktop applications (Windows/macOS/Linux)</li>
-                    <li>📱 Mobile applications with native code</li>
-                    <li>🌐 IoT devices and embedded systems</li>
-                    <li>🛠️ Industrial software and automation</li>
-                </ul>
-            </div>
-
-            <div class="success-callout">
-                <h4>Enterprise Edition — for critical systems:</h4>
-                <ul>
-                    <li>🏦 Financial software and trading platforms</li>
-                    <li>🔒 Cryptographic applications</li>
-                    <li>🎮 Commercial games and entertainment software</li>
-                </ul>
-            </div>
-
-            <h3>💼 Real-World Usage Examples</h3>
-
-            <h4>Case 1: Windows Desktop Application</h4>
-
-            <div class="code-snippet">
-// Simple integration in main.cpp
-#include "license_core_stub.h"
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-                  LPSTR lpCmdLine, int nCmdShow) {
-    // Check license at startup
-    std::ifstream license_file("app.license");
-    if (!license_file || !lc_validate_license(
-        std::string((std::istreambuf_iterator<char>(license_file)),
-                   std::istreambuf_iterator<char>()).c_str())) {
-        MessageBox(NULL, L"License not found", L"Error", MB_OK);
-        return 1;
-    }
-
-    // Check available features
-    bool premium_enabled = lc_has_feature("premium");
-    bool export_enabled = lc_has_feature("export");
-
-    // Run application with corresponding capabilities
-    return run_application(premium_enabled, export_enabled);
-}
-            </div>
-
-            <h4>Case 2: IoT Device on Raspberry Pi</h4>
-
-            <div class="code-snippet">
-// Minimal integration for embedded
-#include <stdio.h>
-#include <stdlib.h>
-#include "license_core_stub.h"
-
-int main() {
-    // Check embedded license
-    extern const char* embedded_license_data; // Embedded in firmware
-
-    if (!lc_validate_license(embedded_license_data)) {
-        printf("Device license validation failed\n");
-        return 1;
-    }
-
-    printf("IoT device licensed to: %s\n", lc_get_hwid());
-
-    // Enable functions based on license
-    if (lc_has_feature("sensors")) {
-        start_sensor_monitoring();
-    }
-    if (lc_has_feature("network")) {
-        start_network_interface();
-    }
-
-    return run_main_loop();
-}
-            </div>
-
-            <h4>Case 3: Enterprise Application with Enhanced Protection</h4>
-
-            <div class="code-snippet">
-// Full integration with monitoring
-class SecureApplication {
-private:
-    EnhancedLicenseManager license_manager_;
-    SecurityMonitor security_;
-
-public:
-    bool initialize() {
-        // Environment check before startup
-        if (!license_manager_.validate_environment()) {
-            log_security_event("Untrusted environment detected");
-            return false;
-        }
-
-        // Runtime integrity check
-        auto status = license_manager_.check_runtime_integrity();
-        if (status.risk_level > SecurityLevel::MEDIUM) {
-            log_security_event("High risk environment detected");
-            return false;
-        }
-
-        // Start security monitoring
-        security_.start_monitoring();
-        return true;
-    }
-
-    void run() {
-        while (running_) {
-            // Periodic security check
-            if (!security_.is_environment_safe()) {
-                log_security_event("Security breach detected");
-                safe_shutdown();
-                break;
-            }
-
-            process_business_logic();
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        }
-    }
-};
-            </div>
-
-            <h2 id="conclusion">📎 Conclusion</h2>
-
-            <p>Over several months of development, I created a sufficiently serious protection system that:</p>
-
-            <ul>
-                <li>✅ <strong>Works everywhere</strong>: C++ applications, browsers, mobile devices</li>
-                <li>✅ <strong>Requires no internet</strong>: Completely autonomous validation</li>
-                <li>✅ <strong>Resistant to basic attacks</strong>: HMAC cryptography + proper architecture</li>
-                <li>✅ <strong>Easy to integrate</strong>: A few lines of code to connect</li>
-                <li>✅ <strong>Scales</strong>: From simple utilities to enterprise solutions</li>
-            </ul>
-
-            <p>If you need a lightweight but serious way to protect your software — use <strong>LicenseCore</strong>. Everything is open source, everything is honest. I don't hide the code because I trust mathematics, not obfuscators.</p>
-
-            <div class="highlight-callout">
-                <h4>🔗 Try it here: <a href="/">licensecore.tech</a></h4>
-                <p>Don't hesitate to ask questions or make suggestions. I'm always happy to get feedback from fellow developers!</p>
-            </div>
-
-            <h3>🧠 Useful Links</h3>
-
-            <ul>
-                <li><strong>API Documentation</strong>: <a href="docs.html">docs.html</a></li>
-                <li><strong>Live Demo</strong>: <a href="/">index.html</a></li>
-                <li><strong>Integration Examples</strong>: <a href="../EXAMPLES.md">EXAMPLES.md</a></li>
-                <li><strong>WASM Guide</strong>: <a href="../WASM_GUIDE.md">WASM_GUIDE.md</a></li>
-            </ul>
-
-            <h3>📸 Code Examples</h3>
-
-            <h4>C++ Integration:</h4>
-
-            <div class="code-snippet">
-#include <license_core/license_manager.hpp>
-#include <iostream>
-#include <fstream>
-
-int main() {
-    try {
-        license_core::LicenseManager manager("your-secret-key");
-
-        std::ifstream file("license.json");
-        std::string license_json((std::istreambuf_iterator<char>(file)),
-                                 std::istreambuf_iterator<char>());
-
-        auto info = manager.load_and_validate(license_json);
-
-        std::cout << "✅ License is valid!" << std::endl;
-        std::cout << "👤 User: " << info.user_id << std::endl;
-        std::cout << "⏰ Valid until: "
-                  << manager.format_iso8601(info.expiry) << std::endl;
-
-        if (manager.has_feature("premium")) {
-            std::cout << "🌟 Premium features active" << std::endl;
-        }
-
-    } catch (const license_core::LicenseException& e) {
-        std::cerr << "❌ License error: " << e.what() << std::endl;
-        return 1;
-    }
-
-    return 0;
-}
-            </div>
-
-            <h4>JavaScript Integration:</h4>
-
-            <div class="code-snippet">
-// Import demo version (or WASM if available)
-import { LicenseCoreDemo } from './demo.js';
-
-async function validateLicense(licenseJson) {
-    try {
-        const manager = new LicenseCoreDemo();
-
-        const result = await manager.validateLicense(licenseJson);
-
-        console.log('✅ License is valid!');
-        console.log('👤 User:', result.user_id);
-
-        if (await manager.hasFeature('premium')) {
-            enablePremiumFeatures();
-        }
-
-    } catch (error) {
-        console.error('❌ License error:', error.message);
-        showLicenseDialog();
-    }
-}
-            </div>
-
-            <h4>Python Integration (via ctypes):</h4>
-
-            <div class="code-snippet">
-import ctypes
-import json
-from pathlib import Path
-
-# Load library
-lib = ctypes.CDLL('./liblicensecore.so')
-
-# Set up functions
-lib.validate_license.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
-lib.validate_license.restype = ctypes.c_bool
-
-def validate_license(license_json: str, secret_key: str) -> bool:
-    return lib.validate_license(
-        license_json.encode('utf-8'),
-        secret_key.encode('utf-8')
-    )
-
-# Usage
-license_data = Path('license.json').read_text()
-if validate_license(license_data, "your-secret-key"):
-    print("✅ License is valid!")
-else:
-    print("❌ License is invalid!")
-            </div>
-
-            <div class="author-bio">
-                <h4>About the Author</h4>
-                <p><strong>Vlad</strong> - System software developer with focus on security and cross-platform solutions. Creator of LicenseCore++ and advocate for accessible software protection that doesn't break the bank.</p>
-                <p>Have questions about the technical implementation? Feel free to reach out at <a href="mailto:vlad@licensecore.tech">vlad@licensecore.tech</a></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="/#features">Features</a></li>
-                        <li><a href="/#demo">Live Demo</a></li>
-                        <li><a href="/#pricing">Pricing</a></li>
-                        <li><a href="docs.html">Documentation</a></li>
-                        <li><a href="architecture-en.html">Architecture</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Compare</h4>
-                    <ul>
-                        <li><a href="comparison.html">Full Comparison</a></li>
-                        <li><a href="comparison.html#cryptolens">vs Cryptolens</a></li>
-                        <li><a href="comparison.html#licensespring">vs LicenseSpring</a></li>
-                        <li><a href="comparison.html#keygen">vs KeyGen</a></li>
-                        <li><a href="/#competitor-comparison">Why Choose Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="QUICKSTART.md">Quick Start Guide</a></li>
-                        <li><a href="EXAMPLES.md">Code Examples</a></li>
-                        <li><a href="EMBEDDED_GUIDE.md">Embedded Guide</a></li>
-                        <li><a href="OBFUSCATED_GUIDE.md">Security Guide</a></li>
-                        <li><a href="README.md">Full Documentation</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="mailto:sales@licensecore.tech">Contact Sales</a></li>
-                        <li><a href="mailto:support@licensecore.tech">Support</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="sitemap.xml">Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
-                <p>LicenseCore++ - The C++ Software Licensing Library with HMAC-SHA256 Security</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Mobile Navigation Functions
-        function toggleMobileMenu() {
-            const overlay = document.getElementById('mobileNavOverlay');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMobileMenu() {
-            const overlay = document.getElementById('mobileNavOverlay');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Close mobile menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeMobileMenu();
-            }
-        });
-    </script>
-
-    <script src="wasm.js"></script>
-</body>
-</html>>Cryptolens:</strong> $1,188/year for basic features ($3,564 over 3 years)</li>
-                <li><strong>LicenseSpring:</strong> $2,388/year for professional features ($7,164 over 3 years)</li>
-                <li><strong>KeyGen:</strong> $29/month with limited offline capabilities ($1,044+ over 3 years)</li>
-            </ul>
-
-            <p>These solutions force you into expensive recurring subscriptions that eat into your profits year after year. Worse, many lack modern features like WebAssembly support or require complex integrations.</p>
-
-            <div class="highlight-callout">
-                <h4>💡 What if there was a better way?</h4>
-                <p>LicenseCore++ offers enterprise-grade software protection with military-level HMAC-SHA256 security, WebAssembly support, and cross-platform compatibility — all for a <strong>one-time payment</strong> starting at just $199.</p>
-            </div>
-
-            <h2>🔐 Why LicenseCore++ is Different</h2>
-
-            <h3>Built by Developers, for Developers</h3>
-
-            <p>LicenseCore++ was born from frustration with existing solutions. As a systems software developer, I needed robust protection that worked across platforms without breaking the bank. After building multiple applications and watching them get pirated despite expensive licensing solutions, I decided to create something better.</p>
-
-            <div class="feature-showcase">
-                <div class="feature-box">
-                    <span class="feature-icon">🛡️</span>
-                    <h4>Military-Grade HMAC-SHA256 Security</h4>
-                    <p>Cryptographically secure licensing that's impossible to forge. Each license is signed with enterprise-level authentication that prevents tampering or counterfeiting.</p>
-                </div>
-                <div class="feature-box">
-                    <span class="feature-icon">🌐</span>
-                    <h4>WebAssembly Ready</h4>
-                    <p>First licensing solution with native WebAssembly support. Deploy the same C++ validation logic in browsers, desktop apps, and embedded systems.</p>
-                </div>
-                <div class="feature-box">
-                    <span class="feature-icon">💰</span>
-                    <h4>One-Time Payment Model</h4>
-                    <p>Own your licensing solution forever. No recurring fees, no surprise renewals, no vendor lock-in. Pay once, use forever.</p>
-                </div>
-                <div class="feature-box">
-                    <span class="feature-icon">⚡</span>
-                    <h4>Lightning Fast Performance</h4>
-                    <p>Sub-5ms license validation with minimal memory footprint. Optimized for both native applications and browser environments.</p>
-                </div>
-            </div>
-
-            <h2>🔧 Technical Excellence That Sets Us Apart</h2>
-
-            <p>Most licensing solutions use outdated RSA signatures or basic hash checks. We chose HMAC-SHA256 for specific technical reasons that make our solution faster, more secure, and more portable.</p>
-
-            <div class="code-snippet">
-// LicenseCore++ Hardware Fingerprinting
-std::string generate_hwid() {
-    HardwareFingerprint hwfp;
-    
-    // Multi-factor hardware identification
-    auto cpu_id = hwfp.get_cpu_signature();
-    auto mac_addr = hwfp.get_primary_mac_address();
-    auto disk_serial = hwfp.get_system_disk_serial();
-    
-    // Combine with salt and hash
-    return hwfp.combine_and_hash({cpu_id, mac_addr, disk_serial});
-}
-
-// License validation with hardware binding
-bool validate_license(const std::string& license_json) {
-    auto current_hwid = generate_hwid();
-    auto license_data = parse_license(license_json);
-    
-    // Verify HMAC signature and hardware match
-    return hmac_validator.verify(license_data, secret_key) && 
-           hardware_matches(license_data.hwid, current_hwid);
-}
-            </div>
-
-            <h2>💸 The Real Cost of Licensing Solutions</h2>
-
-            <h3>5-Year Total Cost Comparison</h3>
-
-            <div class="comparison-chart">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Solution</th>
-                            <th>Year 1</th>
-                            <th>Year 2</th>
-                            <th>Year 3</th>
-                            <th>Year 4</th>
-                            <th>Year 5</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>LicenseCore++ Pro</strong></td>
-                            <td class="winner">$899</td>
-                            <td class="winner">$0</td>
-                            <td class="winner">$0</td>
-                            <td class="winner">$0</td>
-                            <td class="winner">$0</td>
-                            <td class="winner"><strong>$899</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cryptolens</strong></td>
-                            <td>$1,188</td>
-                            <td>$1,188</td>
-                            <td>$1,188</td>
-                            <td>$1,188</td>
-                            <td>$1,188</td>
-                            <td><strong>$5,940</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>LicenseSpring</strong></td>
-                            <td>$2,388</td>
-                            <td>$2,388</td>
-                            <td>$2,388</td>
-                            <td>$2,388</td>
-                            <td>$2,388</td>
-                            <td><strong>$11,940</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="highlight-callout">
-                <h4>🎯 The Bottom Line</h4>
-                <p>With LicenseCore++ Professional, you save:</p>
-                <ul>
-                    <li><strong>$5,041</strong> vs Cryptolens over 5 years</li>
-                    <li><strong>$11,041</strong> vs LicenseSpring over 5 years</li>
-                </ul>
-                <p><em>That's real money you can reinvest in your product development instead of licensing fees.</em></p>
-            </div>
-
-            <h2>🌐 Cross-Platform Deployment Made Simple</h2>
-
-            <h3>One Codebase, Everywhere</h3>
-
-            <p>Unlike competitors that require different implementations for different platforms, LicenseCore++ uses a single C++ codebase that compiles to:</p>
-
-            <ul>
-                <li><strong>Native Windows/macOS/Linux binaries</strong> for desktop applications</li>
-                <li><strong>WebAssembly modules</strong> for browser-based validation</li>
-                <li><strong>Mobile libraries</strong> for iOS and Android apps</li>
-                <li><strong>Embedded system libraries</strong> for IoT and specialized hardware</li>
-            </ul>
-
-            <div class="code-snippet">
-// Same validation code works everywhere
-#ifdef EMSCRIPTEN
-    // WebAssembly build
-    EMSCRIPTEN_BINDINGS(LicenseCore) {
-        class_&lt;LicenseManager&gt;("LicenseManager")
-            .constructor&lt;std::string&gt;()
-            .function("validateLicense", &LicenseManager::validate_license);
-    }
-#endif
-
-// Desktop/mobile native usage
-LicenseManager manager("your-secret-key");
-auto result = manager.validate_license(license_json);
-
-// Browser JavaScript usage
-const manager = new LicenseCore.LicenseManager("your-secret-key");
-const result = manager.validateLicense(licenseJson);
-            </div>
-
-            <h2>🎯 Real Customer Success Stories</h2>
-
-            <div class="author-bio">
-                <p><strong>Sarah Chen, CTO at DataFlow Solutions:</strong></p>
-                <p><em>"We were paying LicenseSpring $2,388/year for our SaaS analytics platform. The costs were killing our margins as a bootstrap startup. LicenseCore++ gave us the same features for $899 one-time. Over 3 years, that's $6,265 in savings that we reinvested into product development. The WebAssembly support was perfect for our browser-based tools."</em></p>
-            </div>
-
-            <div class="author-bio">
-                <p><strong>Marcus Rodriguez, Lead Architect at TechInnovate:</strong></p>
-                <p><em>"Cryptolens wanted $1,188/year for basic features. LicenseCore++ Professional gave us advanced hardware binding, offline validation, and WebAssembly support for $899 total. The integration took 2 hours instead of the weeks we spent with our previous solution. ROI was immediate."</em></p>
-            </div>
-
-            <div class="cta-section">
-                <h3>Ready to Save $3,000+ on Software Licensing?</h3>
-                <p>Join thousands of developers who've made the switch to LicenseCore++. Get enterprise-grade protection without the enterprise-grade price tag.</p>
-                
-                <div class="cta-buttons">
-                    <a href="/#demo" class="btn-white">Try Live Demo</a>
-                    <a href="/#pricing" class="btn-outline">View Pricing</a>
-                </div>
-                
-                <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.9;">30-day money-back guarantee • No recurring fees • Lifetime ownership</p>
-            </div>
-
-            <div class="author-bio">
-                <h4>About LicenseCore++</h4>
-                <p><strong>LicenseCore Development Team</strong> - We're a team of systems engineers and security specialists passionate about making software protection accessible to developers of all sizes. After years of frustration with existing licensing solutions, we built LicenseCore++ to be the licensing library we wished existed.</p>
-                <p>Questions? Reach us at <a href="mailto:team@licensecore.tech">team@licensecore.tech</a></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="/#features">Features</a></li>
-                        <li><a href="/#demo">Live Demo</a></li>
-                        <li><a href="/#pricing">Pricing</a></li>
-                        <li><a href="docs.html">Documentation</a></li>
-                        <li><a href="architecture-en.html">Architecture</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Compare</h4>
-                    <ul>
-                        <li><a href="comparison.html">Full Comparison</a></li>
-                        <li><a href="comparison.html#cryptolens">vs Cryptolens</a></li>
-                        <li><a href="comparison.html#licensespring">vs LicenseSpring</a></li>
-                        <li><a href="comparison.html#keygen">vs KeyGen</a></li>
-                        <li><a href="#">Why Choose Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="QUICKSTART.md">Quick Start Guide</a></li>
-                        <li><a href="EXAMPLES.md">Code Examples</a></li>
-                        <li><a href="EMBEDDED_GUIDE.md">Embedded Guide</a></li>
-                        <li><a href="OBFUSCATED_GUIDE.md">Security Guide</a></li>
-                        <li><a href="README.md">Full Documentation</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="mailto:sales@licensecore.tech">Contact Sales</a></li>
-                        <li><a href="mailto:support@licensecore.tech">Support</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="sitemap.xml">Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 LicenseCore Technologies. Professional software licensing made simple.</p>
-                <p>LicenseCore++ - The C++ Software Licensing Library with HMAC-SHA256 Security</p>
-            </div>
-        </div>
-    </div>
-
-    <script src="wasm.js"></script>
-</body>
 </html>
